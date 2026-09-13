@@ -17,6 +17,10 @@ public class HeapSort {
      * @param arr the array to be sorted
      */
     public static void execute(int[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return;
+        }
+
         buildHeap(arr, arr.length);
         for (int i = arr.length - 1; i > 0; i--) {
             swap(arr, 0, i);
