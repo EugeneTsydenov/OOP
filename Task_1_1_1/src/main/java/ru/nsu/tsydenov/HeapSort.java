@@ -2,8 +2,8 @@ package ru.nsu.tsydenov;
 
 /**
  * Utility class that provides the HeapSort algorithm to sort integer arrays in ascending order.
- * <p>
- * The algorithm has a time complexity of {@code O(n log n)} and a space complexity of {@code O(1)}.
+ *
+ * <p>The algorithm has a time complexity of {@code O(n log n)} and a space complexity of {@code O(1)}.
  *
  * @author TsydenovEugene
  * @version 1.0
@@ -33,7 +33,7 @@ public class HeapSort {
      *
      * @param arr the input array
      * @param n length of the array
-    */
+     */
     private static void buildHeap(int[] arr, int n) {
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(arr, n, i);
@@ -49,8 +49,8 @@ public class HeapSort {
      */
     private static void heapify(int[] arr, int n, int root) {
         int largest = root;
-        int left = 2*root+1;
-        int right = 2*root+2;
+        int left = 2 * root + 1;
+        int right = 2 * root + 2;
 
         if (left >= n && right >= n) {
             return;
@@ -82,4 +82,3 @@ public class HeapSort {
         arr[second] = temp;
     }
 }
-

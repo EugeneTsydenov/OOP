@@ -1,15 +1,15 @@
 package ru.nsu.tsydenov;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @DisplayName("HeapSort Algorithm Tests")
 class HeapSortTest {
+
     @Test
     @DisplayName("Test: Standard case")
     void testStandardArray() {
