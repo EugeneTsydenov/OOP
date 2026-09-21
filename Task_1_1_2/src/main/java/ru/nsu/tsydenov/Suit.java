@@ -1,10 +1,20 @@
 package ru.nsu.tsydenov;
 
 public enum Suit {
-    CLUBS,
-    DIAMONDS,
-    HEARTS,
-    SPADES;
+    CLUBS("Clubs"),
+    DIAMONDS("Diamonds"),
+    HEARTS("Hearts"),
+    SPADES("Spades");
+
+    private final String displayName;
+
+    Suit(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
 
     public static Suit fromIndex(int n) {
         return switch (n) {
