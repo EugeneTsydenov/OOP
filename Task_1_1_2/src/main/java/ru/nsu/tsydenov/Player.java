@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 /**
  * Represents a player in a Blackjack game.
+ *
  * <p>
  * Manages the player's cards, hand calculations (including Ace point adjustments),
  * and win/bust checks.
  * </p>
+ *
  */
 public class Player {
     /** Stores the initial two cards dealt at the start of a round. */
@@ -47,6 +49,7 @@ public class Player {
 
     /**
      * Calculates the total point value of the current hand.
+     *
      * <p>
      * Automatically lowers Aces from 11 points to 1 point if the total points exceed 21.
      * </p>

@@ -2,9 +2,11 @@ package ru.nsu.tsydenov;
 
 /**
  * Represents a playing card suit in a card game.
+ *
  * <p>
  * Each suit stores its human-readable {@code displayName} and provides utility
  * methods for converting between suit instances and integer indices.
+ *
  * </p>
  */
 public enum Suit {

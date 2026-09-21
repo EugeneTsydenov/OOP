@@ -2,10 +2,12 @@ package ru.nsu.tsydenov;
 
 /**
  * Represents the dealer in a Blackjack game.
+ *
  * <p>
  * Extends {@link Player} and manages dealing cards from a {@link Deck},
  * revealing the hidden face-down card ("hole card"), and following standard dealer drawing rules.
  * </p>
+ *
  */
 public class Dealer extends Player {
     /** The deck shoe used by the dealer to deal cards. */
@@ -75,6 +77,7 @@ public class Dealer extends Player {
 
     /**
      * Returns a string representation of the dealer's hand.
+     *
      * <p>
      * If the hidden card is revealed, returns all cards; otherwise hides the second card as {@code <hole card>}.
      * </p>

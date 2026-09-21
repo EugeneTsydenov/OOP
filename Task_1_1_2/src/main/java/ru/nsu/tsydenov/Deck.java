@@ -6,8 +6,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Represents a deck containing one or more standard 52-card decks.
+ *
  * <p>
  * Tracks drawn cards using a pointer ({@code topIdx}) and allows shuffling and drawing cards.
+ *
  * </p>
  */
 public class Deck {
@@ -75,6 +77,7 @@ public class Deck {
 
     /**
      * Draws the top card from the deck.
+     *
      * <p>
      * If all cards have been drawn, it automatically resets the deck pointer to zero and reshuffles.
      * </p>
