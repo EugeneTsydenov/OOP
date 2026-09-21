@@ -2,10 +2,17 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'application'
+    id 'checkstyle'
 }
 
 repositories {
     mavenCentral()
+}
+
+checkstyle {
+    toolVersion = '10.12.5'
+    configFile = file("${rootDir}/../.github/google_checks.xml")
+    ignoreFailures = false
 }
 
 application {
