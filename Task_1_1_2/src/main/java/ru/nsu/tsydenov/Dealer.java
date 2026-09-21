@@ -11,7 +11,7 @@ package ru.nsu.tsydenov;
  */
 public class Dealer extends Player {
     /** The deck shoe used by the dealer to deal cards. */
-    private Deck deck;
+    private final Deck deck;
 
     /** Indicates whether the dealer's hidden hole card has been revealed. */
     private boolean isOpenedCard;
@@ -79,7 +79,8 @@ public class Dealer extends Player {
      * Returns a string representation of the dealer's hand.
      *
      * <p>
-     * If the hidden card is revealed, returns all cards; otherwise hides the second card as {@code <hole card>}.
+     * If the hidden card is revealed,
+     * returns all cards; otherwise hides the second card as {@code <hole card>}.
      * </p>
      *
      * @return formatted string of the dealer's hand

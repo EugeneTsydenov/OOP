@@ -46,6 +46,7 @@ public class Card {
      */
     @Override
     public String toString() {
-        return rank.getDisplayName() + " of " + suit.getDisplayName() + " (" + rank.getNominal() + ")";
+        return rank.getDisplayName()
+                + " of " + suit.getDisplayName() + " (" + rank.getNominal() + ")";
     }
 }

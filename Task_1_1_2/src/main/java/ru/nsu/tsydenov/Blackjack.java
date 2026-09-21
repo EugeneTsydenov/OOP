@@ -10,22 +10,34 @@ import java.util.Scanner;
  * @since 1.0
  */
 public class Blackjack {
-    /** Scanner instance used to read player input from the console. */
+    /**
+     * Scanner instance used to read player input from the console.
+     */
     private final Scanner scanner = new Scanner(System.in);
 
-    /** The dealer instance managing the cards. */
+    /**
+     * The dealer instance managing the cards.
+     */
     private final Dealer dealer;
 
-    /** The human player instance. */
+    /**
+     * The human player instance.
+     */
     private final Player player;
 
-    /** Tracks the total number of rounds played. */
+    /**
+     * Tracks the total number of rounds played.
+     */
     private int roundCnt;
 
-    /** Tracks the total number of rounds won by the dealer. */
+    /**
+     * Tracks the total number of rounds won by the dealer.
+     */
     private int dealerWinsCnt;
 
-    /** Tracks the total number of rounds won by the player. */
+    /**
+     * Tracks the total number of rounds won by the player.
+     */
     private int playerWinsCnt;
 
     /**
@@ -115,14 +127,16 @@ public class Blackjack {
     private void printPlayerAndDealerHands() {
         System.out.printf("\tYour hand: %s > %d\n", player.handString(), player.totalHandNominal());
         if (dealer.isOpenedCard()) {
-            System.out.printf("\tDealer hand: %s > %d\n", dealer.handString(), dealer.totalHandNominal());
+            System.out.printf(
+                    "\tDealer hand: %s > %d\n", dealer.handString(), dealer.totalHandNominal());
         } else {
             System.out.printf("\tDealer hand: %s\n", dealer.handString());
         }
     }
 
     /**
-     * Handles the end of a round when both scores are equal (Push/Draw) and prints the score message.
+     * Handles the end of a round
+     * when both scores are equal (Push/Draw) and prints the score message.
      */
     private void draw() {
         if (playerWinsCnt == dealerWinsCnt) {
@@ -131,11 +145,13 @@ public class Blackjack {
         }
 
         if (playerWinsCnt < dealerWinsCnt) {
-            System.out.printf("Draw! The score is %s:%s not in your favor.\n", playerWinsCnt, dealerWinsCnt);
+            System.out.printf(
+                    "Draw! The score is %s:%s not in your favor.\n", playerWinsCnt, dealerWinsCnt);
             return;
         }
 
-        System.out.printf("Draw! The score is %s:%s in your favor.\n", playerWinsCnt, dealerWinsCnt);
+        System.out.printf(
+                "Draw! The score is %s:%s in your favor.\n", playerWinsCnt, dealerWinsCnt);
     }
 
     /**
@@ -144,16 +160,21 @@ public class Blackjack {
     private void playerWin() {
         playerWinsCnt++;
         if (playerWinsCnt == dealerWinsCnt) {
-            System.out.printf("You won the round! The score is %s:%s tied.\n", playerWinsCnt, dealerWinsCnt);
+            System.out.printf(
+                    "You won the round! The score is %s:%s tied.\n", playerWinsCnt, dealerWinsCnt);
             return;
         }
 
         if (playerWinsCnt < dealerWinsCnt) {
-            System.out.printf("You won the round! The score is %s:%s not in your favor.\n", playerWinsCnt, dealerWinsCnt);
+            System.out.printf(
+                    "You won the round! The score is %s:%s not in your favor.\n",
+                    playerWinsCnt, dealerWinsCnt);
             return;
         }
 
-        System.out.printf("You won the round! The score is %s:%s in your favor.\n", playerWinsCnt, dealerWinsCnt);
+        System.out.printf(
+                "You won the round! The score is %s:%s in your favor.\n",
+                playerWinsCnt, dealerWinsCnt);
     }
 
     /**
@@ -162,16 +183,22 @@ public class Blackjack {
     private void dealerWin() {
         dealerWinsCnt++;
         if (playerWinsCnt == dealerWinsCnt) {
-            System.out.printf("The dealer won the round! The score is %s:%s tied.\n", playerWinsCnt, dealerWinsCnt);
+            System.out.printf(
+                    "The dealer won the round! The score is %s:%s tied.\n",
+                    playerWinsCnt, dealerWinsCnt);
             return;
         }
 
         if (playerWinsCnt < dealerWinsCnt) {
-            System.out.printf("The dealer won the round! The score is %s:%s not in your favor.\n", playerWinsCnt, dealerWinsCnt);
+            System.out.printf(
+                    "The dealer won the round! The score is %s:%s not in your favor.\n",
+                    playerWinsCnt, dealerWinsCnt);
             return;
         }
 
-        System.out.printf("The dealer won the round! The score is %s:%s in your favor.\n", playerWinsCnt, dealerWinsCnt);
+        System.out.printf(
+                "The dealer won the round! The score is %s:%s in your favor.\n",
+                playerWinsCnt, dealerWinsCnt);
     }
 
     /**
@@ -209,7 +236,8 @@ public class Blackjack {
     }
 
     /**
-     * Executes the dealer's turn by revealing the face-down card and drawing until reaching at least 17 points.
+     * Executes the dealer's turn by revealing the face-down card
+     * and drawing until reaching at least 17 points.
      */
     private void dealerMoves() {
         Card openedCard = dealer.openCloseCard();

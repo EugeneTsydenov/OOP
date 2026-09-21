@@ -6,8 +6,8 @@ package ru.nsu.tsydenov;
  * <p>
  * Each suit stores its human-readable {@code displayName} and provides utility
  * methods for converting between suit instances and integer indices.
- *
  * </p>
+ *
  */
 public enum Suit {
     /**

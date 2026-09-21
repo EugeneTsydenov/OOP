@@ -9,8 +9,8 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * <p>
  * Tracks drawn cards using a pointer ({@code topIdx}) and allows shuffling and drawing cards.
- *
  * </p>
+ *
  */
 public class Deck {
     /** The list of all cards in the shoe. */
@@ -54,7 +54,8 @@ public class Deck {
     }
 
     /**
-     * Shuffles only the remaining (undrawn) cards in the shoe using Durstenfeld/Fisher-Yates shuffle.
+     * Shuffles only the remaining (undrawn) cards in the shoe
+     * using Durstenfeld/Fisher-Yates shuffle.
      */
     public void shuffle() {
         for (int i = cards.size() - 1; i > topIdx; i--) {
@@ -79,7 +80,8 @@ public class Deck {
      * Draws the top card from the deck.
      *
      * <p>
-     * If all cards have been drawn, it automatically resets the deck pointer to zero and reshuffles.
+     * If all cards have been drawn,
+     * it automatically resets the deck pointer to zero and reshuffles.
      * </p>
      *
      * @return the drawn {@link Card}

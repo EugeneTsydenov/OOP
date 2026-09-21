@@ -5,8 +5,8 @@ package ru.nsu.tsydenov;
  *
  * <p>
  * Each rank has a display name for printing and a base point value for Blackjack.
- *
  * </p>
+ *
  */
 public enum Rank {
     /** The Two card (worth 2 points). */

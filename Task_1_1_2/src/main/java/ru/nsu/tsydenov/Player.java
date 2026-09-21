@@ -22,7 +22,7 @@ public class Player {
      * Creates a new player with an empty hand.
      */
     public Player() {
-        hand = new ArrayList<Card>();
+        hand = new ArrayList<>();
     }
 
     /**
