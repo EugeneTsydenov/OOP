@@ -35,7 +35,7 @@ class DealerTest {
 
         assertNotNull(dealtCard);
         assertEquals(1, player.hand.size());
-        assertEquals(dealtCard, player.hand.getFirst());
+        assertEquals(dealtCard, player.hand.get(0));
     }
 
     @Test
