@@ -77,8 +77,10 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Deck</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">Represents a deck containing one or more standard 52-card decks.
+
  <p>
  Tracks drawn cards using a pointer (<code>topIdx</code>) and allows shuffling and drawing cards.
+
  </p></div>
 </section>
 <section class="summary">
@@ -174,6 +176,7 @@ loadScripts(document, 'script');</script>
 <h3>takeCard</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Card.html" title="class in ru.nsu.tsydenov">Card</a></span>&nbsp;<span class="element-name">takeCard</span>()</div>
 <div class="block">Draws the top card from the deck.
+
  <p>
  If all cards have been drawn, it automatically resets the deck pointer to zero and reshuffles.
  </p></div>
