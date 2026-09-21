@@ -48,11 +48,17 @@ public class Deck {
 
     public Card takeCard() {
         if (topIdx >= cards.size()) {
-            throw new IllegalStateException("Deck is empty");
+            topIdx = 0;
+            shuffle();
         }
 
         Card card = cards.get(topIdx);
         topIdx++;
         return card;
+    }
+
+    public void resetAndShuffle() {
+        topIdx = 0;
+        shuffle();
     }
 }
