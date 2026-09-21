@@ -7,7 +7,7 @@ import java.util.Scanner;
  *
  * @author Tsydenov
  * @version 1.0
- * @since 1.0ы
+ * @since 1.0
  */
 public class Blackjack {
     /** Scanner instance used to read player input from the console. */
