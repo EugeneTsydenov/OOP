@@ -13,8 +13,12 @@ public class Card {
         return name.getNominal();
     }
 
+    public CardName getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
-        return suit.toString() + name.toString();
+        return name.getDisplayName() + " of " + suit.getDisplayName() + " (" + name.getNominal() + ")";
     }
 }
