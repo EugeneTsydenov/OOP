@@ -1,11 +1,5 @@
 package ru.nsu.tsydenov;
 
-import ru.nsu.tsydenov.card.Card;
-import ru.nsu.tsydenov.card.Rank;
-import ru.nsu.tsydenov.card.Suit;
-import ru.nsu.tsydenov.participant.Dealer;
-import ru.nsu.tsydenov.participant.Player;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -13,6 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import ru.nsu.tsydenov.card.Card;
+import ru.nsu.tsydenov.card.Rank;
+import ru.nsu.tsydenov.card.Suit;
+import ru.nsu.tsydenov.participant.Dealer;
+import ru.nsu.tsydenov.participant.Player;
 
 /**
  * Tests the Dealer class.
