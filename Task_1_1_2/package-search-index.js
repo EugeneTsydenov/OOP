@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.tsydenov"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.tsydenov.card"},{"l":"ru.nsu.tsydenov.game"},{"l":"ru.nsu.tsydenov.hand"},{"l":"ru.nsu.tsydenov.participant"}];updateSearchResults();

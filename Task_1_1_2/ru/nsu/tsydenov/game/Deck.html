@@ -5,21 +5,21 @@
 <title>Deck (Task_1_1_2 API)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="description" content="declaration: package: ru.nsu.tsydenov, class: Deck">
+<meta name="description" content="declaration: package: ru.nsu.tsydenov.game, class: Deck">
 <meta name="generator" content="javadoc/ClassWriterImpl">
-<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../script-dir/jquery-ui.min.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../jquery-ui.overrides.css" title="Style">
-<script type="text/javascript" src="../../../script.js"></script>
-<script type="text/javascript" src="../../../script-dir/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="../../../script-dir/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../script-dir/jquery-ui.min.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../jquery-ui.overrides.css" title="Style">
+<script type="text/javascript" src="../../../../script.js"></script>
+<script type="text/javascript" src="../../../../script-dir/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
 var oddRowColor = "odd-row-color";
 var tableTab = "table-tab";
 var activeTableTab = "active-table-tab";
-var pathtoroot = "../../../";
+var pathtoroot = "../../../../";
 loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -31,11 +31,12 @@ loadScripts(document, 'script');</script>
 <div class="top-nav" id="navbar-top">
 <div class="skip-nav"><a href="#skip-navbar-top" title="Skip navigation links">Skip navigation links</a></div>
 <ul id="navbar-top-firstrow" class="nav-list" title="Navigation">
+<li><a href="../../../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="nav-bar-cell1-rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
-<li><a href="../../../index-all.html">Index</a></li>
-<li><a href="../../../help-doc.html#class">Help</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html#class">Help</a></li>
 </ul>
 </div>
 <div class="sub-nav">
@@ -66,21 +67,17 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.tsydenov</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.tsydenov.game</a></div>
 <h1 title="Class Deck" class="title">Class Deck</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">ru.nsu.tsydenov.Deck</div>
+<div class="inheritance">ru.nsu.tsydenov.game.Deck</div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Deck</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Represents a deck containing one or more standard 52-card decks.
-
- <p>
- Tracks drawn cards using a pointer (<code>topIdx</code>) and allows shuffling and drawing cards.
- </p></div>
+<div class="block">A deck containing one or more sets of 52 cards.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -94,7 +91,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int)" class="member-name-link">Deck</a><wbr>(int&nbsp;n)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Creates a new deck shoe containing <code>n</code> standard 52-card decks.</div>
+<div class="block">Creates a deck.</div>
 </div>
 </div>
 </section>
@@ -113,18 +110,17 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetAndShuffle()" class="member-name-link">resetAndShuffle</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Resets the top card pointer to the start and reshuffles all cards.</div>
+<div class="block">Starts the deck again and shuffles all cards.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#shuffle()" class="member-name-link">shuffle</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Shuffles only the remaining (undrawn) cards in the shoe
- using Durstenfeld/Fisher-Yates shuffle.</div>
+<div class="block">Shuffles the cards that were not drawn yet.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Card.html" title="class in ru.nsu.tsydenov">Card</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../card/Card.html" title="class in ru.nsu.tsydenov.card">Card</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#takeCard()" class="member-name-link">takeCard</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Draws the top card from the deck.</div>
+<div class="block">Takes the next card.</div>
 </div>
 </div>
 </div>
@@ -147,12 +143,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(int)">
 <h3>Deck</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Deck</span><wbr><span class="parameters">(int&nbsp;n)</span></div>
-<div class="block">Creates a new deck shoe containing <code>n</code> standard 52-card decks.</div>
+<div class="block">Creates a deck.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>n</code> - the number of 52-card decks to include (must be at least 1)</dd>
+<dd><code>n</code> - number of sets of cards</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></code> - if <code>n</code> is less than 1</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></code> - if n is less than 1</dd>
 </dl>
 </section>
 </li>
@@ -168,23 +164,17 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="shuffle()">
 <h3>shuffle</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">shuffle</span>()</div>
-<div class="block">Shuffles only the remaining (undrawn) cards in the shoe
- using Durstenfeld/Fisher-Yates shuffle.</div>
+<div class="block">Shuffles the cards that were not drawn yet.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="takeCard()">
 <h3>takeCard</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Card.html" title="class in ru.nsu.tsydenov">Card</a></span>&nbsp;<span class="element-name">takeCard</span>()</div>
-<div class="block">Draws the top card from the deck.
-
- <p>
- If all cards have been drawn,
- it automatically resets the deck pointer to zero and reshuffles.
- </p></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../card/Card.html" title="class in ru.nsu.tsydenov.card">Card</a></span>&nbsp;<span class="element-name">takeCard</span>()</div>
+<div class="block">Takes the next card.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the drawn <a href="Card.html" title="class in ru.nsu.tsydenov"><code>Card</code></a></dd>
+<dd>the next card from the deck</dd>
 </dl>
 </section>
 </li>
@@ -192,7 +182,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="resetAndShuffle()">
 <h3>resetAndShuffle</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetAndShuffle</span>()</div>
-<div class="block">Resets the top card pointer to the start and reshuffles all cards.</div>
+<div class="block">Starts the deck again and shuffles all cards.</div>
 </section>
 </li>
 </ul>
