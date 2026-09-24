@@ -1,11 +1,19 @@
 package ru.nsu.tsydenov;
 
+import ru.nsu.tsydenov.card.Card;
+import ru.nsu.tsydenov.card.Rank;
+import ru.nsu.tsydenov.card.Suit;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
+/**
+ * Tests the Card class.
+ *
+ */
 class CardTest {
 
     @Test

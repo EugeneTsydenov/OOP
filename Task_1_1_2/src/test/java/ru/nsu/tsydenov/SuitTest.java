@@ -1,5 +1,7 @@
 package ru.nsu.tsydenov;
 
+import ru.nsu.tsydenov.card.Suit;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -8,6 +10,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+/**
+ * Tests the Suit class.
+ *
+ */
 class SuitTest {
     @Test
     @DisplayName("Test: get suit by index 0 to 3")

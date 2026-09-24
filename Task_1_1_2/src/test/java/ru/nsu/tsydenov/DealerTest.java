@@ -1,5 +1,11 @@
 package ru.nsu.tsydenov;
 
+import ru.nsu.tsydenov.card.Card;
+import ru.nsu.tsydenov.card.Rank;
+import ru.nsu.tsydenov.card.Suit;
+import ru.nsu.tsydenov.participant.Dealer;
+import ru.nsu.tsydenov.participant.Player;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -8,44 +14,47 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the Dealer class.
+ *
+ */
 class DealerTest {
 
     @Test
     @DisplayName("Test: deal start hand to player and dealer")
     void testDealStartHand() {
-        Deck deck = new Deck(1);
-        Dealer dealer = new Dealer(deck);
+        Dealer dealer = new Dealer();
         Player player = new Player();
 
-        dealer.dealStartHand(player);
+        player.hitStartHand(new Card(Suit.SPADES, Rank.TWO), new Card(Suit.HEARTS, Rank.THREE));
+        dealer.hitStartHand(new Card(Suit.CLUBS, Rank.FOUR), new Card(Suit.DIAMONDS, Rank.FIVE));
 
-        assertEquals(2, player.hand.size());
-        assertEquals(2, dealer.hand.size());
+        assertEquals(2, player.getHand().size());
+        assertEquals(2, dealer.getHand().size());
         assertFalse(dealer.isOpenedCard());
     }
 
     @Test
     @DisplayName("Test: deal single card to player")
     void testDealCard() {
-        Deck deck = new Deck(1);
-        Dealer dealer = new Dealer(deck);
+        Dealer dealer = new Dealer();
         Player player = new Player();
 
-        Card dealtCard = dealer.deal(player);
+        Card dealtCard = new Card(Suit.SPADES, Rank.ACE);
+        player.hit(dealtCard);
 
         assertNotNull(dealtCard);
-        assertEquals(1, player.hand.size());
-        assertEquals(dealtCard, player.hand.get(0));
+        assertEquals(1, player.getHand().size());
+        assertEquals(dealtCard, player.getHand().get(0));
     }
 
     @Test
     @DisplayName("Test: hole card string representation before opening")
     void testHandStringWithHiddenHoleCard() {
-        Deck deck = new Deck(1);
-        Dealer dealer = new Dealer(deck);
+        Dealer dealer = new Dealer();
         Player player = new Player();
 
-        dealer.dealStartHand(player);
+        dealer.hitStartHand(new Card(Suit.SPADES, Rank.TWO), new Card(Suit.HEARTS, Rank.THREE));
 
         String handStr = dealer.handString();
         assertTrue(handStr.contains("<hole card>"));
@@ -55,11 +64,10 @@ class DealerTest {
     @Test
     @DisplayName("Test: reveal hole card updates state and string")
     void testOpenCloseCard() {
-        Deck deck = new Deck(1);
-        Dealer dealer = new Dealer(deck);
+        Dealer dealer = new Dealer();
         Player player = new Player();
 
-        dealer.dealStartHand(player);
+        dealer.hitStartHand(new Card(Suit.SPADES, Rank.TWO), new Card(Suit.HEARTS, Rank.THREE));
         Card holeCard = dealer.openCloseCard();
 
         assertNotNull(holeCard);
@@ -70,8 +78,7 @@ class DealerTest {
     @Test
     @DisplayName("Test: should dealer draw when total under 17")
     void testShouldDealerDrawUnderSeventeen() {
-        Deck deck = new Deck(1);
-        Dealer dealer = new Dealer(deck);
+        Dealer dealer = new Dealer();
 
         dealer.hit(new Card(Suit.SPADES, Rank.TEN));
         dealer.hit(new Card(Suit.HEARTS, Rank.SIX));
@@ -82,8 +89,7 @@ class DealerTest {
     @Test
     @DisplayName("Test: should not draw when total is 17 or more")
     void testShouldDealerDrawSeventeenOrMore() {
-        Deck deck = new Deck(1);
-        Dealer dealer = new Dealer(deck);
+        Dealer dealer = new Dealer();
 
         // Рука 17 очков (Ten + Seven)
         dealer.hit(new Card(Suit.SPADES, Rank.TEN));
@@ -95,11 +101,10 @@ class DealerTest {
     @Test
     @DisplayName("Test: discard hand resets cards and hides hole card")
     void testDiscardHandResetsState() {
-        Deck deck = new Deck(1);
-        Dealer dealer = new Dealer(deck);
+        Dealer dealer = new Dealer();
         Player player = new Player();
 
-        dealer.dealStartHand(player);
+        dealer.hitStartHand(new Card(Suit.SPADES, Rank.TWO), new Card(Suit.HEARTS, Rank.THREE));
         dealer.openCloseCard();
         assertTrue(dealer.isOpenedCard());
 

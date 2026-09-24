@@ -16,7 +16,7 @@ checkstyle {
 }
 
 application {
-    mainClass = 'ru.nsu.tsydenov.Main'
+    mainClass = 'ru.nsu.tsydenov.game.Main'
 }
 
 run {

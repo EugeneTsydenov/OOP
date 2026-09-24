@@ -1,5 +1,7 @@
 package ru.nsu.tsydenov;
 
+import ru.nsu.tsydenov.card.Rank;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -9,6 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+/**
+ * Tests the Rank class.
+ *
+ */
 class RankTest {
     @Test
     @DisplayName("Test: get rank by index 0 to 12")
