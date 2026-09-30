@@ -43,7 +43,7 @@ class GameRoundTest {
 
         @Override
         public Card takeCard() {
-            return cards.removeFirst();
+            return cards.remove(0);
         }
     }
 
