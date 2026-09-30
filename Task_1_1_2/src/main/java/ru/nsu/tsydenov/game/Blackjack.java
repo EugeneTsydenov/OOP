@@ -16,6 +16,7 @@ public class Blackjack {
     private final Player player;
     private final Deck deck;
     private final Scoreboard scoreboard;
+    private int roundNumber = 1;
 
     /**
      * Creates a game with one deck and console input.
@@ -48,7 +49,7 @@ public class Blackjack {
         System.out.println("Welcome to Blackjack!");
         while (true) {
             GameRound round = new GameRound(deck, dealer, player, scanner, scoreboard);
-            round.play();
+            round.play(roundNumber++);
             player.discardHand();
             dealer.discardHand();
             System.out.println("\n\n\n-------");

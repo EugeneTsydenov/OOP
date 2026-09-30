@@ -35,8 +35,8 @@ public class GameRound {
     }
 
     /** Plays the round. */
-    public void play() {
-        System.out.printf("Round%n");
+    public void play(int roundNumber) {
+        System.out.printf("Round %d\n", roundNumber);
         deck.resetAndShuffle();
         dealInitialHands();
         printHands();
