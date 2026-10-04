@@ -1,11 +1,11 @@
 package ru.nsu.tsydenov.parsing;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
-import ru.nsu.tsydenov.expressions.Expression;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import ru.nsu.tsydenov.expressions.Expression;
 
 @DisplayName("Test: Expression parser")
 class ParserTest {

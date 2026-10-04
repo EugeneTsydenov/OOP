@@ -1,23 +1,21 @@
 package ru.nsu.tsydenov;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import ru.nsu.tsydenov.app.Main;
 import ru.nsu.tsydenov.expressions.Expression;
 import ru.nsu.tsydenov.expressions.Number;
 import ru.nsu.tsydenov.expressions.Variable;
-import ru.nsu.tsydenov.app.Main;
 import ru.nsu.tsydenov.operations.Add;
 import ru.nsu.tsydenov.operations.Div;
 import ru.nsu.tsydenov.operations.Mul;
 import ru.nsu.tsydenov.operations.Sub;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Test: Expression class")
 class ExpressionTest {
@@ -77,7 +75,8 @@ class ExpressionTest {
         assertThrows(IllegalArgumentException.class, () -> Expression.parse(""));
         assertThrows(IllegalArgumentException.class, () -> Expression.parse("x").eval(""));
         assertThrows(IllegalArgumentException.class, () -> Expression.parse("x").eval("x=bad"));
-        assertThrows(IllegalArgumentException.class, () -> Expression.parse("x").eval("x=1; broken"));
+        assertThrows(IllegalArgumentException.class,
+                () -> Expression.parse("x").eval("x=1; broken"));
     }
 
     @Test
