@@ -31,9 +31,9 @@ public class Blackjack {
     /**
      * Creates a game with the given objects.
      *
-     * @param dealer game dealer
-     * @param player game player
-     * @param deck game deck
+     * @param dealer  game dealer
+     * @param player  game player
+     * @param deck    game deck
      * @param scanner input scanner
      */
     public Blackjack(Dealer dealer, Player player, Deck deck, Scanner scanner) {

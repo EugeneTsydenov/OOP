@@ -36,7 +36,6 @@ class DealerTest {
     @Test
     @DisplayName("Test: deal single card to player")
     void testDealCard() {
-        Dealer dealer = new Dealer();
         Player player = new Player();
 
         Card dealtCard = new Card(Suit.SPADES, Rank.ACE);
@@ -51,7 +50,6 @@ class DealerTest {
     @DisplayName("Test: hole card string representation before opening")
     void testHandStringWithHiddenHoleCard() {
         Dealer dealer = new Dealer();
-        Player player = new Player();
 
         dealer.hitStartHand(new Card(Suit.SPADES, Rank.TWO), new Card(Suit.HEARTS, Rank.THREE));
 
@@ -64,7 +62,6 @@ class DealerTest {
     @DisplayName("Test: reveal hole card updates state and string")
     void testOpenCloseCard() {
         Dealer dealer = new Dealer();
-        Player player = new Player();
 
         dealer.hitStartHand(new Card(Suit.SPADES, Rank.TWO), new Card(Suit.HEARTS, Rank.THREE));
         Card holeCard = dealer.openCloseCard();
@@ -101,7 +98,6 @@ class DealerTest {
     @DisplayName("Test: discard hand resets cards and hides hole card")
     void testDiscardHandResetsState() {
         Dealer dealer = new Dealer();
-        Player player = new Player();
 
         dealer.hitStartHand(new Card(Suit.SPADES, Rank.TWO), new Card(Suit.HEARTS, Rank.THREE));
         dealer.openCloseCard();

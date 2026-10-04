@@ -19,7 +19,6 @@ public class Main {
      * @param args program arguments
      */
     public static void main(String[] args) {
-        Deck deck = new Deck(1);
         Player player = new Player();
         Dealer dealer = new Dealer();
         Blackjack blackjack = new Blackjack(dealer, player);
