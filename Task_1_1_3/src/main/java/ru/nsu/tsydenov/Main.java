@@ -1,4 +1,4 @@
-package ru.nsu.tsydenov.app;
+package ru.nsu.tsydenov;
 
 import ru.nsu.tsydenov.expressions.Expression;
 import ru.nsu.tsydenov.expressions.Number;
@@ -26,9 +26,7 @@ public class Main {
         Expression expression = new Add(new Number(3),
                 new Mul(new Number(2), new Variable("x")));
         expression.print();
-        System.out.println();
         expression.derivative("x").print();
-        System.out.println();
-        System.out.println(expression.eval("x = 10; y = 13"));
+        System.out.print(expression.eval("x = 10; y = 13"));
     }
 }

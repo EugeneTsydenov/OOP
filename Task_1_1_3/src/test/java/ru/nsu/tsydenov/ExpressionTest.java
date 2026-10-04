@@ -4,11 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.nsu.tsydenov.app.Main;
 import ru.nsu.tsydenov.expressions.Expression;
 import ru.nsu.tsydenov.expressions.Number;
 import ru.nsu.tsydenov.expressions.Variable;
