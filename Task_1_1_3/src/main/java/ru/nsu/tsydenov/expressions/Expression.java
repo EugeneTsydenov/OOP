@@ -42,7 +42,7 @@ public abstract class Expression {
 
     /** Prints the expression. */
     public void print() {
-        System.out.print(this);
+        System.out.print(this + "\n");
     }
 
     /**

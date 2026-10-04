@@ -27,6 +27,6 @@ public class Main {
                 new Mul(new Number(2), new Variable("x")));
         expression.print();
         expression.derivative("x").print();
-        System.out.print(expression.eval("x = 10; y = 13"));
+        System.out.print(expression.eval("x = 10; y = 13") + "\n");
     }
 }
