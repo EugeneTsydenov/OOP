@@ -39,12 +39,11 @@ public class AdjacencyListGraph implements Graph {
             return false;
         }
 
-        adjacencyList.remove(vertex);
-
         for (Set<String> neighbors : adjacencyList.values()) {
             neighbors.remove(vertex);
         }
 
+        adjacencyList.remove(vertex);
         return true;
     }
 
