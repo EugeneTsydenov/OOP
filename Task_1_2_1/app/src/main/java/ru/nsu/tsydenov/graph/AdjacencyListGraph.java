@@ -1,6 +1,7 @@
 package ru.nsu.tsydenov.graph;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,55 +11,91 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public Set<String> getVertices() {
-        return adjacencyList.keySet();
+        return new HashSet<>(adjacencyList.keySet());
     }
 
     @Override
     public Set<String> getNeighbors(String vertex) {
-        return null;
+        if (!adjacencyList.containsKey(vertex)) {
+            throw new IllegalArgumentException("Vertex not exists");
+        }
+
+        return new HashSet<>(adjacencyList.get(vertex));
     }
 
     @Override
     public boolean addVertex(String vertex) {
-        return false;
+        if (adjacencyList.containsKey(vertex)) {
+            return false;
+        }
+
+        adjacencyList.put(vertex, new HashSet<>());
+        return true;
     }
 
     @Override
     public boolean removeVertex(String vertex) {
-        return false;
+        if (!adjacencyList.containsKey(vertex)) {
+            return false;
+        }
+
+        adjacencyList.remove(vertex);
+
+        for (Set<String> neighbors : adjacencyList.values()) {
+            neighbors.remove(vertex);
+        }
+
+        return true;
     }
 
     @Override
     public boolean addEdge(String from, String to) {
-        return false;
+        if (!adjacencyList.containsKey(from) || !adjacencyList.containsKey(to)) {
+            return false;
+        }
+
+        return adjacencyList.get(from).add(to);
     }
 
     @Override
     public boolean removeEdge(String from, String to) {
-        return false;
+        if (!adjacencyList.containsKey(from) || !adjacencyList.containsKey(to)) {
+            return false;
+        }
+
+        return adjacencyList.get(from).remove(to);
     }
 
     @Override
     public boolean hasVertex(String vertex) {
-        return false;
+        return adjacencyList.containsKey(vertex);
     }
 
     @Override
     public boolean hasEdge(String from, String to) {
-        return false;
+        if (!adjacencyList.containsKey(from)) {
+            return false;
+        }
+
+        return adjacencyList.get(from).contains(to);
     }
 
     @Override
     public int vertexCount() {
-        return 0;
+        return adjacencyList.size();
     }
 
     @Override
     public int edgeCount() {
-        return 0;
+        return adjacencyList
+            .values()
+            .stream()
+            .mapToInt(Set::size)
+            .sum();
     }
 
     @Override
     public void clear() {
+        adjacencyList.clear();
     }
 }
