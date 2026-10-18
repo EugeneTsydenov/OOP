@@ -3,7 +3,22 @@ package ru.nsu.tsydenov.graph;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+/**
+ * Reads a graph from a text file.
+ *
+ * Vertices are listed before the {@code ---} separator.
+ * Edges are listed after it, with each edge represented by
+ * two vertex names separated by whitespace
+ */
 public class GraphReader {
+    /**
+     * Reads vertices and edges into the specified graph
+     *
+     * @param graph graph to populate
+     * @param reader source of graph data
+     * @throws IOException if an I/O error occurs
+     * @throws IllegalArgumentException if the input format is invalid
+     */
     public void read(Graph graph, BufferedReader reader) throws IOException {
         boolean readingEdges = false;
         String line;

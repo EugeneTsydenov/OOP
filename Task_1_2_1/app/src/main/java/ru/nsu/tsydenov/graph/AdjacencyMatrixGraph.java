@@ -8,6 +8,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Directed graph implementation based on an adjacency matrix.
+ *
+ * A matrix cell indicates whether an edge exists between
+ * two vertices
+ */
 public class AdjacencyMatrixGraph implements Graph {
 
     private final List<List<Boolean>> adjacencyMatrix = new ArrayList<>();

@@ -2,6 +2,9 @@ package ru.nsu.tsydenov.graph;
 
 import java.util.Objects;
 
+/**
+ * Provides utility methods for graph comparison and representation
+ */
 public final class GraphUtils {
     private GraphUtils() {
     }

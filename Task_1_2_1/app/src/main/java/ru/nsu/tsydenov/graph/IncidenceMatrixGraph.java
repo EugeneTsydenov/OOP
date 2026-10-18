@@ -8,6 +8,11 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Directed graph implementation based on an incidence matrix.
+ *
+ * Rows represent vertices, and columns represent edges
+ */
 public class IncidenceMatrixGraph implements Graph {
     private final List<String> vertices = new ArrayList<>();
     private final List<List<Integer>> incidenceMatrix = new ArrayList<>();

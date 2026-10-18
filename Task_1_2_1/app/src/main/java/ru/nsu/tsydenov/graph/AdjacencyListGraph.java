@@ -5,6 +5,13 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+
+/**
+ * Directed graph implementation based on an adjacency list
+ *
+ * Each vertex is associated with a set of its outgoing neighbors.
+ * Self-loops are supported
+ */
 public class AdjacencyListGraph implements Graph {
     private final Map<String, Set<String>> adjacencyList = new HashMap<String, Set<String>>();
 
