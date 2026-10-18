@@ -38,6 +38,12 @@ public class GraphReader {
                 String from = vertices[0];
                 String to = vertices[1];
 
+                if (!graph.hasVertex(from) || !graph.hasVertex(to)) {
+                    throw new IllegalArgumentException(
+                            "Edge references an unknown vertex: " + line
+                    );
+                }
+
                 if (!graph.addEdge(from, to)) {
                     throw new IllegalArgumentException(
                             "Duplicate edge: " + line
