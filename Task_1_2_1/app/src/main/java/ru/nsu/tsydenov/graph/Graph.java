@@ -37,6 +37,13 @@ public interface Graph {
    boolean removeVertex(String vertex);
 
    /**
+   * Returns all edges of a graph
+   *
+   * @return list of unique edges
+   */
+   Set<String> getEdges();
+
+   /**
     * Add edge to a graph
     *
     * @param from vertex from which an edge originates

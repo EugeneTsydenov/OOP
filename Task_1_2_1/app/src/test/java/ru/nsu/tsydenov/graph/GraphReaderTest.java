@@ -18,7 +18,7 @@ class GraphReaderTest {
         B
         C
         ---
-        A B
+        A Bq
         A C
         B C
         """;

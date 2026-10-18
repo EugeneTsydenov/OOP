@@ -1,12 +1,12 @@
 package ru.nsu.tsydenov.graph;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+import org.junit.jupiter.api.Test;
+
 class TopologicalSortTest {
+
     private final TopologicalSort topologicalSort = new TopologicalSort();
 
     @Test
@@ -50,9 +50,8 @@ class TopologicalSortTest {
         graph.addEdge("B", "C");
         graph.addEdge("C", "A");
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> topologicalSort.sort(graph)
+        assertThrows(IllegalArgumentException.class, () ->
+            topologicalSort.sort(graph)
         );
     }
 
@@ -63,9 +62,8 @@ class TopologicalSortTest {
         graph.addVertex("A");
         graph.addEdge("A", "A");
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> topologicalSort.sort(graph)
+        assertThrows(IllegalArgumentException.class, () ->
+            topologicalSort.sort(graph)
         );
     }
 }

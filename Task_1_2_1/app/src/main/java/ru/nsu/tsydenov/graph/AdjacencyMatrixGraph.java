@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class AdjacencyMatrixGraph implements Graph {
+
     private final List<List<Boolean>> adjacencyMatrix = new ArrayList<>();
     private final List<String> vertices = new ArrayList<>();
     private final Map<String, Integer> vertexIndices = new HashMap<>();
@@ -21,7 +22,9 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public Set<String> getNeighbors(String vertex) {
-        if(!hasVertex(vertex)) throw new IllegalArgumentException("Vertex not exists");
+        if (!hasVertex(vertex)) throw new IllegalArgumentException(
+            "Vertex not exists"
+        );
 
         Integer idx = vertexIndices.get(vertex);
 
@@ -49,7 +52,9 @@ public class AdjacencyMatrixGraph implements Graph {
             row.add(false);
         }
 
-        List<Boolean> newRow = new ArrayList<>(Collections.nCopies(vertices.size(), false));
+        List<Boolean> newRow = new ArrayList<>(
+            Collections.nCopies(vertices.size(), false)
+        );
         adjacencyMatrix.add(newRow);
 
         return true;
@@ -99,6 +104,18 @@ public class AdjacencyMatrixGraph implements Graph {
         }
     }
 
+    @Override
+    public Set<String> getEdges() {
+        Set<String> edges = new HashSet<>();
+
+        for (String from : getVertices()) {
+            for (String to : getNeighbors(from)) {
+                edges.add(from + " -> " + to);
+            }
+        }
+
+        return edges;
+    }
 
     @Override
     public boolean addEdge(String from, String to) {
@@ -142,7 +159,11 @@ public class AdjacencyMatrixGraph implements Graph {
         Integer fromIdx = vertexIndices.get(from);
         Integer toIdx = vertexIndices.get(to);
 
-        return (fromIdx != null && toIdx != null && adjacencyMatrix.get(fromIdx).get(toIdx));
+        return (
+            fromIdx != null &&
+            toIdx != null &&
+            adjacencyMatrix.get(fromIdx).get(toIdx)
+        );
     }
 
     @Override
@@ -161,5 +182,20 @@ public class AdjacencyMatrixGraph implements Graph {
         vertices.clear();
         adjacencyMatrix.clear();
         vertexIndices.clear();
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        return GraphUtils.equals(this, object);
+    }
+
+    @Override
+    public int hashCode() {
+        return GraphUtils.hashCode(this);
+    }
+
+    @Override
+    public String toString() {
+        return GraphUtils.toString(this);
     }
 }

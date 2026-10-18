@@ -43,6 +43,19 @@ public class AdjacencyListGraph implements Graph {
     }
 
     @Override
+    public Set<String> getEdges() {
+        Set<String> edges = new HashSet<>();
+
+        for (String from : getVertices()) {
+            for (String to : getNeighbors(from)) {
+                edges.add(from + " -> " + to);
+            }
+        }
+
+        return edges;
+    }
+
+    @Override
     public boolean addEdge(String from, String to) {
         if (hasEdge(from, to)) return false;
         return adjacencyList.get(from).add(to);
@@ -87,5 +100,20 @@ public class AdjacencyListGraph implements Graph {
     @Override
     public void clear() {
         adjacencyList.clear();
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        return GraphUtils.equals(this, object);
+    }
+
+    @Override
+    public int hashCode() {
+        return GraphUtils.hashCode(this);
+    }
+
+    @Override
+    public String toString() {
+        return GraphUtils.toString(this);
     }
 }
