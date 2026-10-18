@@ -1,6 +1,8 @@
 package ru.nsu.tsydenov.graph;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,14 +16,14 @@ class GraphReaderTest {
     void testReadGraph_Success() throws IOException {
         Graph graph = new AdjacencyListGraph();
         String input = """
-        A
-        B
-        C
-        ---
-        A Bq
-        A C
-        B C
-        """;
+                A
+                B
+                C
+                ---
+                A B
+                A C
+                B C
+                """;
 
         graphReader.read(graph, new BufferedReader(new StringReader(input)));
 
@@ -41,10 +43,10 @@ class GraphReaderTest {
     void testReadGraph_WithoutEdges() throws IOException {
         Graph graph = new AdjacencyListGraph();
         String input = """
-        A
-        B
-        ---
-        """;
+                A
+                B
+                ---
+                """;
 
         graphReader.read(graph, new BufferedReader(new StringReader(input)));
 
@@ -56,14 +58,14 @@ class GraphReaderTest {
     void testReadGraph_EmptyLines() throws IOException {
         Graph graph = new AdjacencyListGraph();
         String input = """
-        A
+                A
 
-        B
-        ---
+                B
+                ---
 
-        A B
+                A B
 
-        """;
+                """;
 
         graphReader.read(graph, new BufferedReader(new StringReader(input)));
 
@@ -76,10 +78,10 @@ class GraphReaderTest {
     void testReadGraph_SelfLoop() throws IOException {
         Graph graph = new AdjacencyListGraph();
         String input = """
-        A
-        ---
-        A A
-        """;
+                A
+                ---
+                A A
+                """;
 
         graphReader.read(graph, new BufferedReader(new StringReader(input)));
 
@@ -92,10 +94,10 @@ class GraphReaderTest {
     void testReadGraph_DuplicateVertex_ThrowsException() {
         Graph graph = new AdjacencyListGraph();
         String input = """
-        A
-        A
-        ---
-        """;
+                A
+                A
+                ---
+                """;
 
         assertThrows(IllegalArgumentException.class, () ->
             graphReader.read(graph, new BufferedReader(new StringReader(input)))
@@ -106,12 +108,12 @@ class GraphReaderTest {
     void testReadGraph_DuplicateEdge_ThrowsException() {
         Graph graph = new AdjacencyListGraph();
         String input = """
-        A
-        B
-        ---
-        A B
-        A B
-        """;
+                A
+                B
+                ---
+                A B
+                A B
+                """;
 
         assertThrows(IllegalArgumentException.class, () ->
             graphReader.read(graph, new BufferedReader(new StringReader(input)))
@@ -122,10 +124,10 @@ class GraphReaderTest {
     void testReadGraph_UnknownVertex_ThrowsException() {
         Graph graph = new AdjacencyListGraph();
         String input = """
-        A
-        ---
-        A B
-        """;
+                A
+                ---
+                A B
+                """;
 
         assertThrows(IllegalArgumentException.class, () ->
             graphReader.read(graph, new BufferedReader(new StringReader(input)))
@@ -136,12 +138,12 @@ class GraphReaderTest {
     void testReadGraph_InvalidEdgeFormat_ThrowsException() {
         Graph graph = new AdjacencyListGraph();
         String input = """
-        A
-        B
-        C
-        ---
-        A B C
-        """;
+                A
+                B
+                C
+                ---
+                A B C
+                """;
 
         assertThrows(IllegalArgumentException.class, () ->
             graphReader.read(graph, new BufferedReader(new StringReader(input)))
@@ -152,9 +154,9 @@ class GraphReaderTest {
     void testReadGraph_MissingSeparator_ThrowsException() {
         Graph graph = new AdjacencyListGraph();
         String input = """
-        A
-        B
-        """;
+                A
+                B
+                """;
 
         assertThrows(IllegalArgumentException.class, () ->
             graphReader.read(graph, new BufferedReader(new StringReader(input)))
@@ -165,10 +167,10 @@ class GraphReaderTest {
     void testReadGraph_DuplicateSeparator_ThrowsException() {
         Graph graph = new AdjacencyListGraph();
         String input = """
-        A
-        ---
-        ---
-        """;
+                A
+                ---
+                ---
+                """;
 
         assertThrows(IllegalArgumentException.class, () ->
             graphReader.read(graph, new BufferedReader(new StringReader(input)))

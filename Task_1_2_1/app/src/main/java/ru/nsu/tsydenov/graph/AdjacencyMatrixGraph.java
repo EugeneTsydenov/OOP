@@ -28,9 +28,11 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public Set<String> getNeighbors(String vertex) {
-        if (!hasVertex(vertex)) throw new IllegalArgumentException(
-            "Vertex not exists"
-        );
+        if (!hasVertex(vertex)) {
+            throw new IllegalArgumentException(
+                "Vertex not exists"
+            );
+        }
 
         Integer idx = vertexIndices.get(vertex);
 
@@ -68,7 +70,9 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean removeVertex(String vertex) {
-        if (!hasVertex(vertex)) return false;
+        if (!hasVertex(vertex)) {
+            return false;
+        }
 
         Integer idx = vertexIndices.get(vertex);
 
@@ -125,7 +129,9 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean addEdge(String from, String to) {
-        if (hasEdge(from, to)) return false;
+        if (hasEdge(from, to)) {
+            return false;
+        }
 
         Integer fromIdx = vertexIndices.get(from);
         Integer toIdx = vertexIndices.get(to);
@@ -142,7 +148,9 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean removeEdge(String from, String to) {
-        if (!hasEdge(from, to)) return false;
+        if (!hasEdge(from, to)) {
+            return false;
+        }
 
         Integer fromIdx = vertexIndices.get(from);
         Integer toIdx = vertexIndices.get(to);
@@ -155,13 +163,17 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean hasVertex(String vertex) {
-        if (vertex == null) return false;
+        if (vertex == null) {
+            return false;
+        }
         return vertexIndices.containsKey(vertex);
     }
 
     @Override
     public boolean hasEdge(String from, String to) {
-        if (from == null || to == null) return false;
+        if (from == null || to == null) {
+            return false;
+        }
         Integer fromIdx = vertexIndices.get(from);
         Integer toIdx = vertexIndices.get(to);
 

@@ -2,6 +2,9 @@ package ru.nsu.tsydenov.graph;
 
 import java.util.Set;
 
+/**
+ * Defines operations for a directed graph.
+ */
 public interface Graph {
    /**
     * Returns all vertices of a graph

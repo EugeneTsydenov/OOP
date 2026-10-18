@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-
 /**
  * Directed graph implementation based on an adjacency list
  *
@@ -13,7 +12,11 @@ import java.util.Set;
  * Self-loops are supported
  */
 public class AdjacencyListGraph implements Graph {
-    private final Map<String, Set<String>> adjacencyList = new HashMap<String, Set<String>>();
+
+    private final Map<String, Set<String>> adjacencyList = new HashMap<
+        String,
+        Set<String>
+    >();
 
     @Override
     public Set<String> getVertices() {
@@ -31,15 +34,18 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public boolean addVertex(String vertex) {
-        if(hasVertex(vertex)) return false;
+        if (hasVertex(vertex)) {
+            return false;
+        }
         adjacencyList.put(vertex, new HashSet<>());
         return true;
     }
 
     @Override
     public boolean removeVertex(String vertex) {
-        if (!hasVertex(vertex)) return false;
-
+        if (!hasVertex(vertex)) {
+            return false;
+        }
 
         for (Set<String> neighbors : adjacencyList.values()) {
             neighbors.remove(vertex);
@@ -64,13 +70,17 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public boolean addEdge(String from, String to) {
-        if (hasEdge(from, to)) return false;
+        if (hasEdge(from, to)) {
+            return false;
+        }
         return adjacencyList.get(from).add(to);
     }
 
     @Override
     public boolean removeEdge(String from, String to) {
-        if (!hasEdge(from, to)) return false;
+        if (!hasEdge(from, to)) {
+            return false;
+        }
         return adjacencyList.get(from).remove(to);
     }
 
@@ -81,7 +91,9 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public boolean hasEdge(String from, String to) {
-        if (from == null || to == null) return false;
+        if (from == null || to == null) {
+            return false;
+        }
 
         if (!adjacencyList.containsKey(from)) {
             return false;
@@ -97,11 +109,7 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public int edgeCount() {
-        return adjacencyList
-            .values()
-            .stream()
-            .mapToInt(Set::size)
-            .sum();
+        return adjacencyList.values().stream().mapToInt(Set::size).sum();
     }
 
     @Override

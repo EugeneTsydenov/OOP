@@ -25,7 +25,9 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public Set<String> getNeighbors(String vertex) {
-        if (!hasVertex(vertex)) throw new IllegalArgumentException("Vertex does not exist");
+        if (!hasVertex(vertex)) {
+            throw new IllegalArgumentException("Vertex does not exist");
+        }
 
         Integer idx = vertexIndices.get(vertex);
 
@@ -53,7 +55,9 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean addVertex(String vertex) {
-        if (hasVertex(vertex)) return false;
+        if (hasVertex(vertex)) {
+            return false;
+        }
 
 
         int newIdx = vertices.size();
@@ -72,7 +76,9 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean removeVertex(String vertex) {
-        if (!hasVertex(vertex)) return false;
+        if (!hasVertex(vertex)) {
+            return false;
+        }
 
         Integer idx = vertexIndices.get(vertex);
 
@@ -177,7 +183,9 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean hasVertex(String vertex) {
-        if (vertex == null) return false;
+        if (vertex == null) {
+            return false;
+        }
         return vertexIndices.containsKey(vertex);
     }
 
