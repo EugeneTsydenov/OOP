@@ -1,6 +1,7 @@
 package ru.nsu.tsydenov.graph;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -52,7 +53,22 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean addVertex(String vertex) {
-        return false;
+        if (vertex == null || vertexIndices.containsKey(vertex)) {
+            return false;
+        }
+
+        int newIdx = vertices.size();
+        vertices.add(vertex);
+        vertexIndices.put(vertex, newIdx);
+
+        int edgeCount = incidenceMatrix.isEmpty()
+                ? 0
+                : incidenceMatrix.get(0).size();
+
+        List<Integer> newRow = new ArrayList<>(Collections.nCopies(edgeCount, 0));
+        incidenceMatrix.add(newRow);
+
+        return true;
     }
 
     @Override
