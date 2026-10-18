@@ -99,12 +99,40 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean addEdge(String from, String to) {
-        return false;
+        int fromIdx = getIdx(from);
+        int toIdx = getIdx(to);
+
+        if (fromIdx == -1 || toIdx == -1) {
+            return false;
+        }
+
+        if (adjacencyMatrix[fromIdx][toIdx]) {
+            return false;
+        }
+
+        adjacencyMatrix[fromIdx][toIdx] = true;
+        edgeCount++;
+
+        return true;
     }
 
     @Override
     public boolean removeEdge(String from, String to) {
-        return false;
+        int fromIdx = getIdx(from);
+        int toIdx = getIdx(to);
+
+        if (fromIdx == -1 || toIdx == -1) {
+            return false;
+        }
+
+        if (!adjacencyMatrix[fromIdx][toIdx]) {
+            return false;
+        }
+
+        adjacencyMatrix[fromIdx][toIdx] = false;
+        edgeCount--;
+
+        return true;
     }
 
     @Override
