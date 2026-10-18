@@ -12,14 +12,8 @@ import java.util.Queue;
  *
  * A topological ordering exists only if the graph is acyclic
  */
-public class TopologicalSort {
-    /**
-     * Returns a topological ordering of the graph's vertices
-     *
-     * @param graph graph to sort
-     * @return vertices in topological order
-     * @throws IllegalArgumentException if the graph contains a cycle
-     */
+public class TopologicalSort implements GraphSorter {
+    @Override
     public List<String> sort(Graph graph) {
         Map<String, Integer> inDegree = new HashMap<>();
 
