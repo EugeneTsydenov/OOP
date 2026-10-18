@@ -39,7 +39,7 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public boolean removeVertex(String vertex) {
-        if (vertex == null == !adjacencyList.containsKey(vertex)) {
+        if (vertex == null || !adjacencyList.containsKey(vertex)) {
             return false;
         }
 
