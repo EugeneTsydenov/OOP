@@ -1,6 +1,5 @@
 package ru.nsu.tsydenov.graph;
 
-import java.lang.classfile.instruction.BranchInstruction;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -186,7 +185,8 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean hasVertex(String vertex) {
-        return false;
+        if (vertex == null) return false;
+        return vertexIndices.containsKey(vertex);
     }
 
     @Override
@@ -218,15 +218,20 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public int vertexCount() {
-        return 0;
+        return vertices.size();
     }
 
     @Override
     public int edgeCount() {
-        return 0;
+        return incidenceMatrix.isEmpty()
+                ? 0
+                : incidenceMatrix.get(0).size();
     }
 
     @Override
     public void clear() {
+        vertices.clear();
+        incidenceMatrix.clear();
+        vertexIndices.clear();
     }
 }
