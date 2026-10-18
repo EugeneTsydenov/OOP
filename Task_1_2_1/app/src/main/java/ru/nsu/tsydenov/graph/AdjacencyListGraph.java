@@ -8,7 +8,6 @@ import java.util.Set;
 public class AdjacencyListGraph implements Graph {
     private final Map<String, Set<String>> adjacencyList = new HashMap<String, Set<String>>();
 
-
     @Override
     public Set<String> getVertices() {
         return new HashSet<>(adjacencyList.keySet());
@@ -16,11 +15,7 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public Set<String> getNeighbors(String vertex) {
-        if (vertex == null) {
-            throw new IllegalArgumentException("Vertex cannot be null");
-        }
-
-        if (!adjacencyList.containsKey(vertex)) {
+        if (!hasVertex(vertex)) {
             throw new IllegalArgumentException("Vertex not exists");
         }
 
@@ -29,19 +24,15 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public boolean addVertex(String vertex) {
-        if (vertex == null || adjacencyList.containsKey(vertex)) {
-            return false;
-        }
-
+        if(hasVertex(vertex)) return false;
         adjacencyList.put(vertex, new HashSet<>());
         return true;
     }
 
     @Override
     public boolean removeVertex(String vertex) {
-        if (vertex == null || !adjacencyList.containsKey(vertex)) {
-            return false;
-        }
+        if (!hasVertex(vertex)) return false;
+
 
         for (Set<String> neighbors : adjacencyList.values()) {
             neighbors.remove(vertex);
@@ -53,29 +44,25 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public boolean addEdge(String from, String to) {
-        if (!adjacencyList.containsKey(from) || !adjacencyList.containsKey(to)) {
-            return false;
-        }
-
+        if (hasEdge(from, to)) return false;
         return adjacencyList.get(from).add(to);
     }
 
     @Override
     public boolean removeEdge(String from, String to) {
-        if (!adjacencyList.containsKey(from) || !adjacencyList.containsKey(to)) {
-            return false;
-        }
-
+        if (!hasEdge(from, to)) return false;
         return adjacencyList.get(from).remove(to);
     }
 
     @Override
     public boolean hasVertex(String vertex) {
-        return adjacencyList.containsKey(vertex);
+        return vertex != null && adjacencyList.containsKey(vertex);
     }
 
     @Override
     public boolean hasEdge(String from, String to) {
+        if (from == null || to == null) return false;
+
         if (!adjacencyList.containsKey(from)) {
             return false;
         }

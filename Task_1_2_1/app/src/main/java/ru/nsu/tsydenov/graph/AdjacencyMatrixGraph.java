@@ -21,13 +21,9 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public Set<String> getNeighbors(String vertex) {
-        if (vertex == null) {
-            throw new IllegalArgumentException("Vertex cannot be null");
-        }
+        if(!hasVertex(vertex)) throw new IllegalArgumentException("Vertex not exists");
+
         Integer idx = vertexIndices.get(vertex);
-        if (idx == null) {
-            throw new IllegalArgumentException("Vertex does not exist");
-        }
 
         Set<String> neighbors = new HashSet<>();
         List<Boolean> row = adjacencyMatrix.get(idx);
@@ -41,7 +37,7 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean addVertex(String vertex) {
-        if (vertex == null || vertexIndices.containsKey(vertex)) {
+        if (hasVertex(vertex)) {
             return false;
         }
 
@@ -61,10 +57,9 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean removeVertex(String vertex) {
-        if (vertex == null) return false;
+        if (!hasVertex(vertex)) return false;
 
         Integer idx = vertexIndices.get(vertex);
-        if (idx == null) return false;
 
         decrementEdgeCountForVertex(idx);
         vertexIndices.remove(vertex);
@@ -107,15 +102,10 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean addEdge(String from, String to) {
-        if (from == null || to == null) {
-            return false;
-        }
+        if (hasEdge(from, to)) return false;
+
         Integer fromIdx = vertexIndices.get(from);
         Integer toIdx = vertexIndices.get(to);
-
-        if (fromIdx == null || toIdx == null) {
-            return false;
-        }
 
         if (adjacencyMatrix.get(fromIdx).get(toIdx)) {
             return false;
@@ -129,15 +119,10 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean removeEdge(String from, String to) {
-        if (from == null || to == null) {
-            return false;
-        }
+        if (!hasEdge(from, to)) return false;
+
         Integer fromIdx = vertexIndices.get(from);
         Integer toIdx = vertexIndices.get(to);
-
-        if (fromIdx == null || toIdx == null || !adjacencyMatrix.get(fromIdx).get(toIdx)) {
-            return false;
-        }
 
         adjacencyMatrix.get(fromIdx).set(toIdx, false);
         edgeCount--;

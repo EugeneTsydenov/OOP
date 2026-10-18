@@ -14,7 +14,7 @@ public interface Graph {
     * Returns list of unique neighbors of the target vertex
     *
     * @param vertex target vertex
-    * @throws IllegalArgumentException if the vertex is null and not exist in the graph
+    * @throws IllegalArgumentException if the vertex not exist in the graph
     * @return list of unique neighbors
     */
    Set<String> getNeighbors(String vertex);

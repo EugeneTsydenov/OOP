@@ -20,14 +20,9 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public Set<String> getNeighbors(String vertex) {
-        if (vertex == null) {
-            throw new IllegalArgumentException("Vertex cannot be null");
-        }
+        if (!hasVertex(vertex)) throw new IllegalArgumentException("Vertex does not exist");
 
         Integer idx = vertexIndices.get(vertex);
-        if (idx == null) {
-            throw new IllegalArgumentException("Vertex does not exist");
-        }
 
         List<Integer> row = incidenceMatrix.get(idx);
         Set<String> neighbors = new HashSet<>();
@@ -53,9 +48,8 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean addVertex(String vertex) {
-        if (vertex == null || vertexIndices.containsKey(vertex)) {
-            return false;
-        }
+        if (hasVertex(vertex)) return false;
+
 
         int newIdx = vertices.size();
         vertices.add(vertex);
@@ -73,14 +67,9 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean removeVertex(String vertex) {
-        if (vertex == null) {
-            return false;
-        }
+        if (!hasVertex(vertex)) return false;
 
         Integer idx = vertexIndices.get(vertex);
-        if (idx == null) {
-            return false;
-        }
 
         List<Integer> row = incidenceMatrix.get(idx);
 
@@ -107,19 +96,12 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean addEdge(String from, String to) {
-        if (from == null || to == null) {
-            return false;
-        }
-        Integer fromIdx = vertexIndices.get(from);
-        Integer toIdx = vertexIndices.get(to);
-
-        if (fromIdx == null || toIdx == null) {
-            return false;
-        }
-
         if (hasEdge(from, to)) {
                 return false;
         }
+
+        Integer fromIdx = vertexIndices.get(from);
+        Integer toIdx = vertexIndices.get(to);
 
         for (int i = 0; i < vertices.size(); i++) {
             if (fromIdx == i) {
@@ -140,20 +122,12 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean removeEdge(String from, String to) {
-        if (from == null || to == null) {
+        if (!hasEdge(from, to)) {
             return false;
         }
 
         Integer fromIdx = vertexIndices.get(from);
         Integer toIdx = vertexIndices.get(to);
-
-        if (fromIdx == null || toIdx == null) {
-            return false;
-        }
-
-        if (!hasEdge(from, to)) {
-            return false;
-        }
 
         List<Integer> fromRow = incidenceMatrix.get(fromIdx);
         int found = -1;
