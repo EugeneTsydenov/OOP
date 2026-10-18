@@ -1,4 +1,5 @@
 package ru.nsu.tsydenov.graph;
+
 class AdjacencyMatrixGraphTest extends GraphTest {
 
     @Override

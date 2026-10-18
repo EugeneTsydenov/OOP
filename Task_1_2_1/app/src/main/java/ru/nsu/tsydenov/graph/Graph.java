@@ -6,98 +6,96 @@ import java.util.Set;
  * Defines operations for a directed graph.
  */
 public interface Graph {
-   /**
-    * Returns all vertices of a graph
-    *
-    * @return list of unique vertices
-    */
-   Set<String> getVertices();
+    /**
+     * Returns all vertices of the graph.
+     *
+     * @return set of unique vertices
+     */
+    Set<String> getVertices();
 
-   /**
-    * Returns list of unique neighbors of the target vertex
-    *
-    * @param vertex target vertex
-    * @throws IllegalArgumentException if the vertex not exist in the graph
-    * @return list of unique neighbors
-    */
-   Set<String> getNeighbors(String vertex);
+    /**
+     * Returns all unique neighbors of the specified vertex.
+     *
+     * @param vertex target vertex
+     * @return set of unique neighbors
+     * @throws IllegalArgumentException if the vertex does not exist in the graph
+     */
+    Set<String> getNeighbors(String vertex);
 
+    /**
+     * Adds a vertex to the graph.
+     *
+     * @param vertex vertex to add
+     * @return true if the vertex was added, false if it already exists
+     */
+    boolean addVertex(String vertex);
 
-   /**
-    * Add vertex to a graph
-    *
-    * @param vertex that need to be added
-    * @return true if the vertex added, false if the vertex exists in a graph
-    * */
-   boolean addVertex(String vertex);
+    /**
+     * Removes a vertex from the graph.
+     *
+     * @param vertex vertex to remove
+     * @return true if the vertex was removed, false if it does not exist
+     */
+    boolean removeVertex(String vertex);
 
-   /**
-    * Remove vertex from a graph
-    *
-    * @param vertex that need to be removed
-    * @return true if the vertex removed, false if the vertex not exists in a graph
-    */
-   boolean removeVertex(String vertex);
+    /**
+     * Returns all edges of the graph.
+     *
+     * @return set of unique edges
+     */
+    Set<String> getEdges();
 
-   /**
-   * Returns all edges of a graph
-   *
-   * @return list of unique edges
-   */
-   Set<String> getEdges();
+    /**
+     * Adds an edge to the graph.
+     *
+     * @param from source vertex
+     * @param to destination vertex
+     * @return true if the edge was added, false if it could not be added
+     */
+    boolean addEdge(String from, String to);
 
-   /**
-    * Add edge to a graph
-    *
-    * @param from vertex from which an edge originates
-    * @param to vertex into which an edge enters
-    * @return true if the edge added, false if the edge cannot be added
-    */
-   boolean addEdge(String from, String to);
+    /**
+     * Removes an edge from the graph.
+     *
+     * @param from source vertex
+     * @param to destination vertex
+     * @return true if the edge was removed, false if it does not exist
+     */
+    boolean removeEdge(String from, String to);
 
-   /**
-    * Remove edge from a graph
-    *
-    * @param from vertex from which an edge originates
-    * @param to vertex into which an edge enters
-    * @return true if an edge removed, false if the edge not exists in a graph
-    */
-   boolean removeEdge(String from, String to);
+    /**
+     * Determines whether a vertex exists in the graph.
+     *
+     * @param vertex vertex to check
+     * @return true if the vertex exists, false otherwise
+     */
+    boolean hasVertex(String vertex);
 
-   /**
-    * Determines whether a vertex exists in the graph
-    *
-    * @param vertex that needs to be checked
-    * @return true if the grapth has vertex, false if the graph hasnt vertex
-    */
-   boolean hasVertex(String vertex);
+    /**
+     * Determines whether an edge exists in the graph.
+     *
+     * @param from source vertex
+     * @param to destination vertex
+     * @return true if the edge exists, false otherwise
+     */
+    boolean hasEdge(String from, String to);
 
+    /**
+     * Returns the number of vertices in the graph.
+     *
+     * @return number of vertices
+     */
+    int vertexCount();
 
-   /**
-    * Determines whether an edge exists in the graph
-    *
-    * @param from vertex from which an edge originates
-    * @param to vertex into which an edge enters
-    * @return true if the grapth has edge, false if the graph hasnt edge
-    */
-   boolean hasEdge(String from, String to);
+    /**
+     * Returns the number of edges in the graph.
+     *
+     * @return number of edges
+     */
+    int edgeCount();
 
-   /**
-    * Calculates the number of vertices in a graph
-    *
-    * @return count vertices in the grapth
-    */
-   int vertexCount();
-
-   /**
-    * Calculates the number of edges in a graph
-    *
-    * @return count edges in the grapth
-    */
-   int edgeCount();
-
-   /**
-    * clear grapth
-    */
-   void clear();
+    /**
+     * Clears the graph.
+     */
+    void clear();
 }

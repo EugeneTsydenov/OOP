@@ -9,7 +9,6 @@ import java.util.Queue;
 
 /**
  * Topologicals sorting with Kahn algorithm
- *
  * A topological ordering exists only if the graph is acyclic
  */
 public class TopologicalSort implements GraphSorter {

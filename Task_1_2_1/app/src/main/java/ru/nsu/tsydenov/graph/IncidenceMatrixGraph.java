@@ -2,16 +2,15 @@ package ru.nsu.tsydenov.graph;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * Directed graph implementation based on an incidence matrix.
- *
- * Rows represent vertices, and columns represent edges
+ * Rows represent vertices, and columns represent edges.
  */
 public class IncidenceMatrixGraph implements Graph {
     private final List<String> vertices = new ArrayList<>();
@@ -40,8 +39,9 @@ public class IncidenceMatrixGraph implements Graph {
                 continue;
             }
 
-            if (row.get(i) != -1)
+            if (row.get(i) != -1) {
                 continue;
+            }
 
             for (int j = 0; j < incidenceMatrix.size(); j++) {
                 if (incidenceMatrix.get(j).get(i) == 1) {
@@ -125,7 +125,7 @@ public class IncidenceMatrixGraph implements Graph {
         }
 
         if (hasEdge(from, to)) {
-                return false;
+            return false;
         }
 
         Integer fromIdx = vertexIndices.get(from);
@@ -209,12 +209,13 @@ public class IncidenceMatrixGraph implements Graph {
         List<Integer> fromRow = incidenceMatrix.get(fromIdx);
 
         for (int i = 0; i < fromRow.size(); i++) {
-            if (fromRow.get(i) == -1
-                    && incidenceMatrix.get(toIdx).get(i) == 1)
+            if (fromRow.get(i) == -1 && incidenceMatrix.get(toIdx).get(i) == 1) {
                 return true;
+            }
 
-            if (fromIdx.equals(toIdx) && fromRow.get(i) == 2)
+            if (fromIdx.equals(toIdx) && fromRow.get(i) == 2) {
                 return true;
+            }
         }
 
         return false;

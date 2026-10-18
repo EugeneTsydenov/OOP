@@ -1,5 +1,7 @@
 package ru.nsu.tsydenov;
 
+import java.util.List;
+
 import ru.nsu.tsydenov.graph.AdjacencyListGraph;
 import ru.nsu.tsydenov.graph.AdjacencyMatrixGraph;
 import ru.nsu.tsydenov.graph.Graph;
@@ -7,9 +9,15 @@ import ru.nsu.tsydenov.graph.GraphSorter;
 import ru.nsu.tsydenov.graph.IncidenceMatrixGraph;
 import ru.nsu.tsydenov.graph.TopologicalSort;
 
-import java.util.List;
-
+/**
+ * Application entry point for graph operations.
+ */
 public class Main {
+    /**
+    * Runs the application.
+    *
+    * @param args command-line arguments
+    */
     public static void main(String[] args) {
         List<Graph> graphs = List.of(
                 new AdjacencyListGraph(),

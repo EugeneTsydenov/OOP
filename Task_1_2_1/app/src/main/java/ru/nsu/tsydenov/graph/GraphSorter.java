@@ -7,7 +7,7 @@ import java.util.List;
  */
 public interface GraphSorter {
     /**
-     * Returns the vertices of a graph in the order defined by the algorithm
+     * Returns the vertices of a graph in the order defined by the algorithm.
      *
      * @param graph graph to sort
      * @return list of vertices in the resulting order

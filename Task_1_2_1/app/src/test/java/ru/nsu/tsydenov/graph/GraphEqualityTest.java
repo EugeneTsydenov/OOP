@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 class GraphEqualityTest {
     @Test
     void testEquals_DifferentRepresentations() {
-        Graph listGraph = new AdjacencyListGraph();
-        Graph matrixGraph = new AdjacencyMatrixGraph();
+        final Graph listGraph = new AdjacencyListGraph();
+        final Graph matrixGraph = new AdjacencyMatrixGraph();
 
         listGraph.addVertex("A");
         listGraph.addVertex("B");

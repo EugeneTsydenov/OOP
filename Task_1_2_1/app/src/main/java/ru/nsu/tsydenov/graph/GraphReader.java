@@ -5,7 +5,6 @@ import java.io.IOException;
 
 /**
  * Reads a graph from a text file.
- *
  * Vertices are listed before the {@code ---} separator.
  * Edges are listed after it, with each edge represented by
  * two vertex names separated by whitespace

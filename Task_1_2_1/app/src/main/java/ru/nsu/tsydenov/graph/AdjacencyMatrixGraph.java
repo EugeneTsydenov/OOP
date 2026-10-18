@@ -10,7 +10,6 @@ import java.util.Set;
 
 /**
  * Directed graph implementation based on an adjacency matrix.
- *
  * A matrix cell indicates whether an edge exists between
  * two vertices
  */
@@ -29,9 +28,7 @@ public class AdjacencyMatrixGraph implements Graph {
     @Override
     public Set<String> getNeighbors(String vertex) {
         if (!hasVertex(vertex)) {
-            throw new IllegalArgumentException(
-                "Vertex not exists"
-            );
+            throw new IllegalArgumentException("Vertex not exists");
         }
 
         Integer idx = vertexIndices.get(vertex);
@@ -89,8 +86,12 @@ public class AdjacencyMatrixGraph implements Graph {
         int size = vertices.size();
 
         for (int i = 0; i < size; i++) {
-            if (targetRow.get(i)) edgeCount--;
-            if (adjacencyMatrix.get(i).get(idx)) edgeCount--;
+            if (targetRow.get(i)) {
+                edgeCount--;
+            }
+            if (adjacencyMatrix.get(i).get(idx)) {
+                edgeCount--;
+            }
         }
 
         if (targetRow.get(idx)) {
@@ -182,9 +183,9 @@ public class AdjacencyMatrixGraph implements Graph {
         Integer toIdx = vertexIndices.get(to);
 
         return (
-            fromIdx != null &&
-            toIdx != null &&
-            adjacencyMatrix.get(fromIdx).get(toIdx)
+            fromIdx != null
+            && toIdx != null
+            && adjacencyMatrix.get(fromIdx).get(toIdx)
         );
     }
 

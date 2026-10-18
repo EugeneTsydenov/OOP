@@ -20,7 +20,7 @@ class GraphReaderTest {
                 B
                 C
                 ---
-                A B
+                A Bё
                 A C
                 B C
                 """;
