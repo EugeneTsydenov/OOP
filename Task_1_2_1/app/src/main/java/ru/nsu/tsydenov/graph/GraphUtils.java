@@ -16,7 +16,7 @@ public final class GraphUtils {
         }
 
         return graph.getVertices().equals(other.getVertices())
-                && graph.getEdges().equals(graph.getEdges());
+                && graph.getEdges().equals(other.getEdges());
     }
 
     public static int hashCode(Graph graph) {
