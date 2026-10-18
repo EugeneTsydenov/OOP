@@ -120,6 +120,10 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean addEdge(String from, String to) {
+        if (!hasVertex(from) || !hasVertex(to)) {
+            return false;
+        }
+
         if (hasEdge(from, to)) {
                 return false;
         }
