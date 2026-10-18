@@ -107,7 +107,35 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean addEdge(String from, String to) {
-        return false;
+        if (from == null || to == null) {
+            return false;
+        }
+        Integer fromIdx = vertexIndices.get(from);
+        Integer toIdx = vertexIndices.get(to);
+
+        if (fromIdx == null || toIdx == null) {
+            return false;
+        }
+
+        if (hasEdge(from, to)) {
+                return false;
+        }
+
+        for (int i = 0; i < vertices.size(); i++) {
+            if (fromIdx == i) {
+                incidenceMatrix.get(fromIdx).add(fromIdx == toIdx ? 2 : -1);
+                continue;
+            }
+
+            if (toIdx == i) {
+                incidenceMatrix.get(toIdx).add(1);
+                continue;
+            }
+
+            incidenceMatrix.get(i).add(0);
+        }
+
+        return true;
     }
 
     @Override
@@ -122,6 +150,28 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean hasEdge(String from, String to) {
+        if (from == null || to == null) {
+            return false;
+        }
+
+        Integer fromIdx = vertexIndices.get(from);
+        Integer toIdx = vertexIndices.get(to);
+
+        if (fromIdx == null || toIdx == null) {
+            return false;
+        }
+
+        List<Integer> fromRow = incidenceMatrix.get(fromIdx);
+
+        for (int i = 0; i < fromRow.size(); i++) {
+            if (fromRow.get(i) == -1
+                    && incidenceMatrix.get(toIdx).get(i) == 1)
+                return true;
+
+            if (fromIdx.equals(toIdx) && fromRow.get(i) == 2)
+                return true;
+        }
+
         return false;
     }
 
