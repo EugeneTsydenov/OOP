@@ -1,7 +1,6 @@
 package ru.nsu.tsydenov.graph;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 public class AdjacencyMatrixGraph implements Graph {
@@ -52,7 +51,7 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean addVertex(String vertex) {
-        if (vertex.equals(null)) {
+        if (vertex == null) {
             return false;
         }
 
@@ -110,25 +109,36 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean hasVertex(String vertex) {
-        return false;
+        return getIdx(vertex) != -1;
     }
 
     @Override
     public boolean hasEdge(String from, String to) {
-        return false;
+        int fromIdx = getIdx(from);
+        int toIdx = getIdx(to);
+
+        if (fromIdx == -1 || toIdx == -1) {
+            return false;
+        }
+
+        return adjacencyMatrix[fromIdx][toIdx];
     }
 
     @Override
     public int vertexCount() {
-        return 0;
+        return vertexCount;
     }
 
     @Override
     public int edgeCount() {
-        return 0;
+        return edgeCount;
     }
 
     @Override
     public void clear() {
+        vertexCount = 0;
+        edgeCount = 0;
+        vertices = new String[5];
+        adjacencyMatrix = new boolean[5][5];
     }
 }
