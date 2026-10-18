@@ -1,5 +1,6 @@
 package ru.nsu.tsydenov.graph;
 
+import java.lang.classfile.instruction.BranchInstruction;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -140,7 +141,47 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean removeEdge(String from, String to) {
-        return false;
+        if (from == null || to == null) {
+            return false;
+        }
+
+        Integer fromIdx = vertexIndices.get(from);
+        Integer toIdx = vertexIndices.get(to);
+
+        if (fromIdx == null || toIdx == null) {
+            return false;
+        }
+
+        if (!hasEdge(from, to)) {
+            return false;
+        }
+
+        List<Integer> fromRow = incidenceMatrix.get(fromIdx);
+        int found = -1;
+
+        for (int i = 0; i < fromRow.size(); i++) {
+            if (fromIdx.equals(toIdx) && fromRow.get(i) == 2) {
+                found = i;
+                break;
+            }
+
+            if (!fromIdx.equals(toIdx)
+                    && fromRow.get(i) == -1
+                    && incidenceMatrix.get(toIdx).get(i) == 1) {
+                found = i;
+                break;
+            }
+        }
+
+        if (found == -1) {
+            return false;
+        }
+
+        for (List<Integer> row : incidenceMatrix) {
+            row.remove(found);
+        }
+
+        return true;
     }
 
     @Override
