@@ -73,7 +73,36 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean removeVertex(String vertex) {
-        return false;
+        if (vertex == null) {
+            return false;
+        }
+
+        Integer idx = vertexIndices.get(vertex);
+        if (idx == null) {
+            return false;
+        }
+
+        List<Integer> row = incidenceMatrix.get(idx);
+
+        for (int i = row.size() - 1; i >= 0; i--) {
+            if (row.get(i) == 0) {
+                continue;
+            }
+
+            for (List<Integer> matrixRow : incidenceMatrix) {
+                matrixRow.remove(i);
+            }
+        }
+
+        incidenceMatrix.remove((int) idx);
+        vertices.remove((int) idx);
+        vertexIndices.remove(vertex);
+
+        for (int i = idx; i < vertices.size(); i++) {
+            vertexIndices.put(vertices.get(i), i);
+        }
+
+        return true;
     }
 
     @Override
