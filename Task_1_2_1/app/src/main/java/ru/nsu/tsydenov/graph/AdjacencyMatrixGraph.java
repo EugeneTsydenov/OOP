@@ -1,116 +1,127 @@
 package ru.nsu.tsydenov.graph;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class AdjacencyMatrixGraph implements Graph {
-    private boolean[][] adjacencyMatrix = new boolean[5][5];
-    private String[] vertices = new String[5];
-    private int vertexCount;
+    private final List<List<Boolean>> adjacencyMatrix = new ArrayList<>();
+    private final List<String> vertices = new ArrayList<>();
+    private final Map<String, Integer> vertexIndices = new HashMap<>();
     private int edgeCount;
 
     @Override
     public Set<String> getVertices() {
-        Set<String> result = new HashSet<>();
-
-        for (int i = 0; i < vertexCount; i++) {
-            result.add(vertices[i]);
-        }
-
-        return result;
+        return new HashSet<>(vertices);
     }
 
     @Override
     public Set<String> getNeighbors(String vertex) {
-        int idx = getIdx(vertex);
-
-        if (idx == -1) {
-            throw new IllegalArgumentException("Vertex not exists");
+        if (vertex == null) {
+            throw new IllegalArgumentException("Vertex cannot be null");
+        }
+        Integer idx = vertexIndices.get(vertex);
+        if (idx == null) {
+            throw new IllegalArgumentException("Vertex does not exist");
         }
 
-        boolean[] a = adjacencyMatrix[idx];
         Set<String> neighbors = new HashSet<>();
-        for (int i = 0; i < vertexCount; i++) {
-            if (a[i]) {
-                neighbors.add(vertices[i]);
+        List<Boolean> row = adjacencyMatrix.get(idx);
+        for (int i = 0; i < vertices.size(); i++) {
+            if (row.get(i)) {
+                neighbors.add(vertices.get(i));
             }
         }
-
         return neighbors;
-    }
-
-    private int getIdx(String vertex) {
-        for (int i = 0; i < vertexCount; i++) {
-            if (vertices[i].equals(vertex)) {
-                return i;
-            }
-        }
-
-        return -1;
     }
 
     @Override
     public boolean addVertex(String vertex) {
-        if (vertex == null) {
+        if (vertex == null || vertexIndices.containsKey(vertex)) {
             return false;
         }
 
-        int idx = getIdx(vertex);
-        if (idx != -1) {
-            return false;
+        int newIdx = vertices.size();
+        vertices.add(vertex);
+        vertexIndices.put(vertex, newIdx);
+
+        for (List<Boolean> row : adjacencyMatrix) {
+            row.add(false);
         }
 
-        if (vertices.length == vertexCount) {
-            expandGrapth();
-        }
+        List<Boolean> newRow = new ArrayList<>(Collections.nCopies(vertices.size(), false));
+        adjacencyMatrix.add(newRow);
 
-        vertices[vertexCount] = vertex;
-        vertexCount++;
         return true;
-    }
-
-    private void expandGrapth() {
-        expandVertices();
-        expandMatrix();
-    }
-
-    private void expandVertices() {
-        String[] newVertices = new String[vertices.length*2];
-        for (int i = 0; i < vertexCount; i++) {
-            newVertices[i] = vertices[i];
-        }
-        vertices = newVertices;
-    }
-
-    private void expandMatrix() {
-        boolean[][] newMatrix = new boolean[adjacencyMatrix.length*2][adjacencyMatrix.length*2];
-        for (int i = 0; i < adjacencyMatrix.length; i++) {
-            for (int j = 0; j < adjacencyMatrix[i].length; j++) {
-                newMatrix[i][j] = adjacencyMatrix[i][j];
-            }
-        }
-        adjacencyMatrix = newMatrix;
     }
 
     @Override
     public boolean removeVertex(String vertex) {
-        return false;
+        if (vertex == null) return false;
+
+        Integer idx = vertexIndices.get(vertex);
+        if (idx == null) return false;
+
+        decrementEdgeCountForVertex(idx);
+        vertexIndices.remove(vertex);
+        physicalRemoveRowAndColumn(idx);
+        updateShiftedVertexIndices(idx);
+
+        return true;
     }
+
+    private void decrementEdgeCountForVertex(int idx) {
+        List<Boolean> targetRow = adjacencyMatrix.get(idx);
+        int size = vertices.size();
+
+        for (int i = 0; i < size; i++) {
+            if (targetRow.get(i)) edgeCount--;
+            if (adjacencyMatrix.get(i).get(idx)) edgeCount--;
+        }
+
+        if (targetRow.get(idx)) {
+            edgeCount++;
+        }
+    }
+
+    private void physicalRemoveRowAndColumn(int idx) {
+        vertices.remove(idx);
+
+        for (List<Boolean> row : adjacencyMatrix) {
+            row.remove(idx);
+        }
+
+        adjacencyMatrix.remove(idx);
+    }
+
+    private void updateShiftedVertexIndices(int startIdx) {
+        for (int i = startIdx; i < vertices.size(); i++) {
+            vertexIndices.put(vertices.get(i), i);
+        }
+    }
+
 
     @Override
     public boolean addEdge(String from, String to) {
-        int fromIdx = getIdx(from);
-        int toIdx = getIdx(to);
+        if (from == null || to == null) {
+            return false;
+        }
+        Integer fromIdx = vertexIndices.get(from);
+        Integer toIdx = vertexIndices.get(to);
 
-        if (fromIdx == -1 || toIdx == -1) {
+        if (fromIdx == null || toIdx == null) {
             return false;
         }
 
-        if (adjacencyMatrix[fromIdx][toIdx]) {
+        if (adjacencyMatrix.get(fromIdx).get(toIdx)) {
             return false;
         }
 
-        adjacencyMatrix[fromIdx][toIdx] = true;
+        adjacencyMatrix.get(fromIdx).set(toIdx, true);
         edgeCount++;
 
         return true;
@@ -118,18 +129,17 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean removeEdge(String from, String to) {
-        int fromIdx = getIdx(from);
-        int toIdx = getIdx(to);
+        if (from == null || to == null) {
+            return false;
+        }
+        Integer fromIdx = vertexIndices.get(from);
+        Integer toIdx = vertexIndices.get(to);
 
-        if (fromIdx == -1 || toIdx == -1) {
+        if (fromIdx == null || toIdx == null || !adjacencyMatrix.get(fromIdx).get(toIdx)) {
             return false;
         }
 
-        if (!adjacencyMatrix[fromIdx][toIdx]) {
-            return false;
-        }
-
-        adjacencyMatrix[fromIdx][toIdx] = false;
+        adjacencyMatrix.get(fromIdx).set(toIdx, false);
         edgeCount--;
 
         return true;
@@ -137,24 +147,22 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean hasVertex(String vertex) {
-        return getIdx(vertex) != -1;
+        if (vertex == null) return false;
+        return vertexIndices.containsKey(vertex);
     }
 
     @Override
     public boolean hasEdge(String from, String to) {
-        int fromIdx = getIdx(from);
-        int toIdx = getIdx(to);
+        if (from == null || to == null) return false;
+        Integer fromIdx = vertexIndices.get(from);
+        Integer toIdx = vertexIndices.get(to);
 
-        if (fromIdx == -1 || toIdx == -1) {
-            return false;
-        }
-
-        return adjacencyMatrix[fromIdx][toIdx];
+        return (fromIdx != null && toIdx != null && adjacencyMatrix.get(fromIdx).get(toIdx));
     }
 
     @Override
     public int vertexCount() {
-        return vertexCount;
+        return vertices.size();
     }
 
     @Override
@@ -164,9 +172,9 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public void clear() {
-        vertexCount = 0;
         edgeCount = 0;
-        vertices = new String[5];
-        adjacencyMatrix = new boolean[5][5];
+        vertices.clear();
+        adjacencyMatrix.clear();
+        vertexIndices.clear();
     }
 }

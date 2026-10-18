@@ -16,6 +16,10 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public Set<String> getNeighbors(String vertex) {
+        if (vertex == null) {
+            throw new IllegalArgumentException("Vertex cannot be null");
+        }
+
         if (!adjacencyList.containsKey(vertex)) {
             throw new IllegalArgumentException("Vertex not exists");
         }
@@ -25,7 +29,7 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public boolean addVertex(String vertex) {
-        if (adjacencyList.containsKey(vertex)) {
+        if (vertex == null || adjacencyList.containsKey(vertex)) {
             return false;
         }
 
@@ -35,7 +39,7 @@ public class AdjacencyListGraph implements Graph {
 
     @Override
     public boolean removeVertex(String vertex) {
-        if (!adjacencyList.containsKey(vertex)) {
+        if (vertex == null == !adjacencyList.containsKey(vertex)) {
             return false;
         }
 
