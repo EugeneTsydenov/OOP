@@ -28,6 +28,10 @@ public class Div extends BinaryExpression {
 
     @Override
     protected int apply(int left, int right) {
+        if (right == 0) {
+            throw new IllegalArgumentException("right cannot be zero");
+        }
+
         return left / right;
     }
 

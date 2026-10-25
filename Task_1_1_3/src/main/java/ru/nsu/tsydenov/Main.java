@@ -23,10 +23,14 @@ public class Main {
      * @param args command line arguments (not used)
      */
     public static void main(String[] args) {
-        Expression expression = new Add(new Number(3),
-                new Mul(new Number(2), new Variable("x")));
-        expression.print();
-        expression.derivative("x").print();
-        System.out.print(expression.eval("x = 10; y = 13") + "\n");
+        try {
+            Expression expression = new Add(new Number(3),
+                    new Mul(new Number(2), new Variable("x")));
+            expression.print();
+            expression.derivative("x").print();
+            System.out.print(expression.eval("x = 10; y = 13") + "\n");
+        } catch (Exception e) {
+            System.err.printf("something went wrong: %s\n", e.getMessage());
+        }
     }
 }
