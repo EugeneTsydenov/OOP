@@ -185,7 +185,7 @@ public class AdjacencyMatrixGraph implements Graph {
         return (
             fromIdx != null
             && toIdx != null
-            && adjacencyMatrix.get(fromIdx).get(toIdx)
+            &&  adjacencyMatrix.get(fromIdx).get(toIdx)
         );
     }
 
