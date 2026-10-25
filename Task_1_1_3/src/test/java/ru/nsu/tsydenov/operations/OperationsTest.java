@@ -63,7 +63,7 @@ class OperationsTest {
     @Test
     @DisplayName("Test: Div rejects division by zero")
     void testDivisionByZero() {
-        assertThrows(ArithmeticException.class,
+        assertThrows(IllegalArgumentException.class,
                 () -> new Div(new Number(1), new Number(0)).eval(""));
     }
 
