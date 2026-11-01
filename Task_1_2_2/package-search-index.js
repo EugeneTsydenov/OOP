@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.tsydenov"},{"l":"ru.nsu.tsydenov.HashTable"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.tsydenov"},{"l":"ru.nsu.tsydenov.hashtable"}];updateSearchResults();

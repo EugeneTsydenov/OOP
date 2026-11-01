@@ -5,7 +5,7 @@
 <title>ChainedHashTable (app API)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="description" content="declaration: package: ru.nsu.tsydenov.HashTable, class: ChainedHashTable">
+<meta name="description" content="declaration: package: ru.nsu.tsydenov.hashtable, class: ChainedHashTable">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../script-dir/jquery-ui.min.css" title="Style">
@@ -81,21 +81,27 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.tsydenov.HashTable</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.tsydenov.hashtable</a></div>
 <h1 title="Class ChainedHashTable" class="title">Class ChainedHashTable&lt;K,<wbr>V&gt;</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">ru.nsu.tsydenov.HashTable.ChainedHashTable&lt;K,<wbr>V&gt;</div>
+<div class="inheritance">ru.nsu.tsydenov.hashtable.ChainedHashTable&lt;K,<wbr>V&gt;</div>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
+<dt>Type Parameters:</dt>
+<dd><code>K</code> - the type of keys</dd>
+<dd><code>V</code> - the type of values</dd>
+</dl>
+<dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html" title="class or interface in java.lang" class="external-link">Iterable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.Entry.html" title="class or interface in java.util" class="external-link">Map.Entry</a>&lt;K,<wbr>V&gt;&gt;</code>, <code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTable">HashTable</a>&lt;K,<wbr>V&gt;</code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html" title="class or interface in java.lang" class="external-link">Iterable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.Entry.html" title="class or interface in java.util" class="external-link">Map.Entry</a>&lt;K,<wbr>V&gt;&gt;</code>, <code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.hashtable">HashTable</a>&lt;K,<wbr>V&gt;</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ChainedHashTable&lt;K,<wbr>V&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTable">HashTable</a>&lt;K,<wbr>V&gt;</span></div>
+implements <a href="HashTable.html" title="interface in ru.nsu.tsydenov.hashtable">HashTable</a>&lt;K,<wbr>V&gt;</span></div>
+<div class="block">Stores key-value pairs using linked lists.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -223,7 +229,7 @@ implements <a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTabl
 <div class="block">Adds a pair or replaces the value of an existing key.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="HashTable.html#put(K,V)">put</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
+<dd><code><a href="HashTable.html#put(K,V)">put</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.hashtable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>key</code> - the key to add</dd>
 <dd><code>value</code> - the value to store</dd>
@@ -238,7 +244,7 @@ implements <a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTabl
 <div class="block">Finds a value by its key.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="HashTable.html#get(K)">get</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
+<dd><code><a href="HashTable.html#get(K)">get</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.hashtable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>key</code> - the key to find</dd>
 <dt>Returns:</dt>
@@ -255,7 +261,7 @@ implements <a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTabl
 <div class="block">Updates the value of an existing key.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="HashTable.html#update(K,V)">update</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
+<dd><code><a href="HashTable.html#update(K,V)">update</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.hashtable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>key</code> - the key to update</dd>
 <dd><code>value</code> - the new value</dd>
@@ -270,7 +276,7 @@ implements <a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTabl
 <div class="block">Removes a pair by its key.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="HashTable.html#remove(K)">remove</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
+<dd><code><a href="HashTable.html#remove(K)">remove</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.hashtable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>key</code> - the key to remove</dd>
 <dt>Returns:</dt>
@@ -287,7 +293,7 @@ implements <a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTabl
 <div class="block">Removes a pair if its key and value match.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="HashTable.html#remove(K,V)">remove</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
+<dd><code><a href="HashTable.html#remove(K,V)">remove</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.hashtable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>key</code> - the key to remove</dd>
 <dd><code>value</code> - the value to match</dd>
@@ -304,7 +310,7 @@ implements <a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTabl
 <div class="block">Checks if a key exists.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="HashTable.html#containsKey(K)">containsKey</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
+<dd><code><a href="HashTable.html#containsKey(K)">containsKey</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.hashtable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>key</code> - the key to find</dd>
 <dt>Returns:</dt>
@@ -320,7 +326,7 @@ implements <a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTabl
 <div class="block">Returns the number of stored pairs.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="HashTable.html#size()">size</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
+<dd><code><a href="HashTable.html#size()">size</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.hashtable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>the number of pairs</dd>
 </dl>
@@ -334,7 +340,7 @@ implements <a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTabl
 <div class="block">Checks if the table is empty.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="HashTable.html#isEmpty()">isEmpty</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
+<dd><code><a href="HashTable.html#isEmpty()">isEmpty</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.hashtable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>true if the table is empty</dd>
 </dl>
@@ -348,7 +354,7 @@ implements <a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTabl
 <div class="block">Returns an iterator over the stored pairs.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="HashTable.html#iterator()">iterator</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.HashTable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
+<dd><code><a href="HashTable.html#iterator()">iterator</a></code>&nbsp;in interface&nbsp;<code><a href="HashTable.html" title="interface in ru.nsu.tsydenov.hashtable">HashTable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>,<wbr><a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">V</a>&gt;</code></dd>
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html#iterator()" title="class or interface in java.lang" class="external-link">iterator</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html" title="class or interface in java.lang" class="external-link">Iterable</a>&lt;<a href="ChainedHashTable.html" title="type parameter in ChainedHashTable">K</a>&gt;</code></dd>
 <dt>Returns:</dt>
