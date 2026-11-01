@@ -14,7 +14,6 @@ public class ChainedHashTable<K, V> implements HashTable<K, V> {
     private int size;
     private int modCount;
 
-    @SuppressWarnings("unchecked")
     public ChainedHashTable() {
         buckets = (Node<K, V>[]) new Node[DEFAULT_CAPACITY];
     }
@@ -236,7 +235,6 @@ public class ChainedHashTable<K, V> implements HashTable<K, V> {
         return (hash & 0x7fffffff) % buckets.length;
     }
 
-    @SuppressWarnings("unchecked")
     private void resize() {
         int newCapacity = buckets.length * 2;
         Node<K, V>[] newBuckets =
