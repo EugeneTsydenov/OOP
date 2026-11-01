@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.tsydenov.HashTable","l":"ChainedHashTable"},{"p":"ru.nsu.tsydenov.HashTable","l":"HashTable"},{"p":"ru.nsu.tsydenov","l":"Main"}];updateSearchResults();
