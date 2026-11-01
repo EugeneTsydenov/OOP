@@ -1,10 +1,12 @@
 package ru.nsu.tsydenov;
 
 import java.util.Map;
+import ru.nsu.tsydenov.hashtable.ChainedHashTable;
+import ru.nsu.tsydenov.hashtable.HashTable;
 
-import ru.nsu.tsydenov.HashTable.ChainedHashTable;
-import ru.nsu.tsydenov.HashTable.HashTable;
-
+/**
+ * Runs the hash table example.
+ */
 public class Main {
     /**
     * Runs the application.
@@ -27,7 +29,7 @@ public class Main {
             }
 
         } catch (Exception e) {
-            System.out.printf("something went wront: %w", e);
+            System.out.printf("something went wront: %s\n", e.getMessage());
         }
     }
 }

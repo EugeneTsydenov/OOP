@@ -1,5 +1,4 @@
-
-package ru.nsu.tsydenov.HashTable;
+package ru.nsu.tsydenov.hashtable;
 
 import java.util.AbstractMap;
 import java.util.ConcurrentModificationException;

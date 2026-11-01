@@ -1,10 +1,16 @@
-package ru.nsu.tsydenov.HashTable;
+package ru.nsu.tsydenov.hashtable;
 
 import java.util.Iterator;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
+/**
+ * Stores key-value pairs using linked lists.
+ *
+ * @param <K> the type of keys
+ * @param <V> the type of values
+ */
 public class ChainedHashTable<K, V> implements HashTable<K, V> {
 
     private static final int DEFAULT_CAPACITY = 16;
