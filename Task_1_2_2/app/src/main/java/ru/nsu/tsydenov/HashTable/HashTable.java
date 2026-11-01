@@ -1,11 +1,12 @@
+
 package ru.nsu.tsydenov.HashTable;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 /**
- * A hash table that stores values by their keys.
- * Each key is unique and is used to find its value.
+ * Stores values by unique keys.
  *
  * @param <K> the type of keys
  * @param <V> the type of values
@@ -13,19 +14,20 @@ import java.util.Map;
 public interface HashTable<K, V> extends Iterable<Map.Entry<K, V>> {
 
     /**
-     * Adds a new key-value pair to the table.
-     * If the key already exists, its value is replaced.
+     * Adds a pair or replaces the value of an existing key.
      *
      * @param key the key to add
      * @param value the value to store
+     * @throws NullPointerException if the key is null
      */
     void put(K key, V value);
 
     /**
      * Finds a value by its key.
      *
-     * @param key the key to search for
-     * @return the value, or null if the key does not exist
+     * @param key the key to find
+     * @return the value, or null if the key is missing
+     * @throws NullPointerException if the key is null
      */
     V get(K key);
 
@@ -34,56 +36,57 @@ public interface HashTable<K, V> extends Iterable<Map.Entry<K, V>> {
      *
      * @param key the key to update
      * @param value the new value
-     * @throws java.util.NoSuchElementException if the key does not exist
+     * @throws NullPointerException if the key is null
+     * @throws NoSuchElementException if the key is missing
      */
     void update(K key, V value);
 
     /**
-     * Removes a key and its value from the table.
+     * Removes a pair by its key.
      *
      * @param key the key to remove
-     * @return the removed value, or null if the key does not exist
+     * @return the removed value, or null if the key is missing
+     * @throws NullPointerException if the key is null
      */
     V remove(K key);
 
     /**
-     * Removes a pair if both the key and value match.
+     * Removes a pair if its key and value match.
      *
      * @param key the key to remove
      * @param value the value to match
-     * @return true if the pair was removed, false otherwise
+     * @return true if the pair was removed
+     * @throws NullPointerException if the key is null
      */
     boolean remove(K key, V value);
 
     /**
-     * Checks if the table contains a given key.
+     * Checks if a key exists.
      *
-     * @param key the key to search for
-     * @return true if the key exists, false otherwise
+     * @param key the key to find
+     * @return true if the key exists
+     * @throws NullPointerException if the key is null
      */
     boolean containsKey(K key);
 
     /**
-     * Returns the number of pairs stored in the table.
+     * Returns the number of stored pairs.
      *
      * @return the number of pairs
      */
     int size();
 
     /**
-     * Checks if the table has no elements.
+     * Checks if the table is empty.
      *
-     * @return true if the table is empty, false otherwise
+     * @return true if the table is empty
      */
     boolean isEmpty();
 
     /**
-     * Returns an iterator over the key-value pairs.
-     * The iterator detects changes to the table during iteration.
+     * Returns an iterator over the stored pairs.
      *
-     * @return an iterator over the pairs
-     * @throws java.util.ConcurrentModificationException if the table
-     *         is structurally changed during iteration
+     * @return an iterator over the entries
      */
     @Override
     Iterator<Map.Entry<K, V>> iterator();
